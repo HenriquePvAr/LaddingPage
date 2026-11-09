@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="58" viewBox="0 0 480 58" fill="none">
+  <title>Faixa geométrica para o rodapé</title>
+  <g stroke="#C47538" stroke-width="5" opacity=".84" stroke-linejoin="miter">
+    <path d="m0 56 30-51 30 51H0zM16 46 30 22l14 24H16z"/>
+    <path d="m60 5 30 51 30-51H60zM76 15l14 24 14-24H76z"/>
+    <path d="m120 56 30-51 30 51h-60zM136 46l14-24 14 24h-28z"/>
+    <path d="m180 5 30 51 30-51h-60zM196 15l14 24 14-24h-28z"/>
+    <path d="m240 56 30-51 30 51h-60zM256 46l14-24 14 24h-28z"/>
+    <path d="m300 5 30 51 30-51h-60zM316 15l14 24 14-24h-28z"/>
+    <path d="m360 56 30-51 30 51h-60zM376 46l14-24 14 24h-28z"/>
+    <path d="m420 5 30 51 30-51h-60zM436 15l14 24 14-24h-28z"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <title>Textura geométrica discreta para fundo</title>
+  <g stroke="#9C5730" stroke-width="3" opacity=".26" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M12 12h52v52H12zM24 24h28v28H24z"/>
+    <path d="m110 18 30 30-30 30-30-30z"/>
+    <path d="m148 106 40 40-40 40-40-40zM148 124l22 22-22 22-22-22z"/>
+    <path d="M16 120h58v58H16M28 132h34v34H28"/>
+    <path d="m84 104 20 20-20 20-20-20z"/>
+  </g>
+  <g fill="#C57A48" opacity=".16">
+    <path d="M154 18h28v28h-28zM80 166h22v22H80z"/>
+  </g>
+</svg>

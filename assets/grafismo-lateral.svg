@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="610" viewBox="0 0 116 610" fill="none">
+  <title>Grafismo geométrico lateral discreto</title>
+  <g stroke="#AB6844" stroke-width="3" opacity=".22" stroke-linejoin="miter">
+    <path d="M3 15h86L46 58 89 101H3"/>
+    <path d="M3 35h48L29 58l22 23H3"/>
+    <path d="M3 139h96L51 188 99 237H3"/>
+    <path d="m3 163 25 25-25 25M80 163l-25 25 25 25"/>
+    <path d="M4 286h80v80H4zM20 302h48v48H20z"/>
+    <path d="M3 411h96L51 460l48 49H3M3 434l26 26-26 26"/>
+    <path d="M4 543h60l-30 30 30 30H4"/>
+  </g>
+  <g fill="#B77D59" opacity=".13">
+    <path d="M88 286h23v23H88zM78 550h31v31H78z"/>
+  </g>
+</svg>

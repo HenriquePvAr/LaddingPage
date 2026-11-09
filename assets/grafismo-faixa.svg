@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="96" viewBox="0 0 1024 96" fill="none">
+  <title>Grafismos discretos nas extremidades da faixa terracota</title>
+  <g stroke="#4A2219" stroke-width="6" opacity=".30">
+    <path d="M0 0h96L48 48l48 48H0M0 20h56L28 48l28 28H0"/>
+    <path d="M1024 0h-96l48 48-48 48h96M1024 20h-56l28 28-28 28h56"/>
+    <path d="M140 0v96M884 0v96" stroke-width="1" opacity=".3"/>
+  </g>
+  <g stroke="#F4B52B" stroke-width="2" opacity=".95">
+    <path d="m191 48 10-10 10 10-10 10-10-10z"/>
+    <path d="m813 48 10-10 10 10-10 10-10-10z"/>
+  </g>
+</svg>
