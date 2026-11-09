@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="34" viewBox="0 0 960 34" fill="none">
-  <title>Divisor gráfico editorial</title>
-  <path d="M0 17h420M540 17h420" stroke="#A7542A" stroke-width="1.5" opacity=".65"/>
-  <g stroke="#A7542A" stroke-width="2.5">
-    <path d="m458 17 12-12 12 12-12 12-12-12z"/>
-    <path d="m478 17 12-12 12 12-12 12-12-12z"/>
-    <path d="m498 17 12-12 12 12-12 12-12-12z"/>
-  </g>
-</svg>

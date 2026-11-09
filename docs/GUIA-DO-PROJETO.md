@@ -4,7 +4,7 @@
 
 - `index.html`: fonte única do conteúdo, navegação, datas, experiências e rodapé.
 - `css/estilos.css`: componentes, cores, tipografia e comportamento por largura de tela.
-- `assets/`: apenas os recursos servidos pela página. O kit recebido completo está preservado em `docs/referencias/kit-landing-afro-indigena/`.
+- `assets/`: imagens, ícones, grafismos e tokens servidos pela página.
 - `js/script.js`: menu móvel acessível, destaque da seção ativa, animações discretas de entrada e geração local de arquivos `.ics` para as datas. Não adicionar dependências para essas interações.
 - `docs/evidencias/`: capturas integrais da implementação anterior e da implementação atual.
 
@@ -30,4 +30,4 @@
 
 ## Evidências visuais
 
-As capturas de referência visual estão em [`docs/evidencias/`](evidencias/). Elas registram a revisão visual anterior às interações de calendário e às animações de entrada.
+As capturas integrais da página estão em [`docs/evidencias/`](evidencias/): `landing-page-desktop-1440px.png` e `landing-page-celular-390px.png`.

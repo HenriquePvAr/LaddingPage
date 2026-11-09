@@ -20,8 +20,7 @@ assets/                            Imagens, ícones, grafismos e tokens usados n
 css/estilos.css                    Identidade visual e regras responsivas
 js/script.js                       Menu, navegação ativa, animações e arquivos de calendário
 docs/GUIA-DO-PROJETO.md            Manutenção, validação e pendências
-docs/referencias/                  Kit original preservado
-docs/evidencias/                   Capturas completas antes e depois
+docs/evidencias/                   Capturas integrais da página final
 ```
 
 Consulte o [guia do projeto](docs/GUIA-DO-PROJETO.md) antes de alterar conteúdo, assets ou pontos de quebra.
