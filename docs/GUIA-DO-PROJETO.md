@@ -26,8 +26,8 @@
 2. Revisar a página inteira em 1440, 1024, 768, 390 e 320 px; conferir ordem, alinhamento, recortes e ausência de rolagem horizontal.
 3. Conferir se as imagens carregam, as âncoras levam a seções existentes, o menu abre e fecha por toque e teclado, e cada ação de calendário gera a data e a unidade corretas.
 4. Confirmar com a instituição o lockup final da logo, pois o arquivo branco recebido tem o subtítulo “Centro Universitário”, diferente do cartaz.
-5. Confirmar endereços completos das unidades, canal de atendimento para o evento, carga horária e eventual link oficial de inscrição.
+
 
 ## Evidências visuais
 
-As capturas de referência visual estão em [`docs/evidencias/`](evidencias/). Elas registram a revisão visual anterior às interações de calendário e às animações de entrada. O mockup aprovado e o kit original estão em [`docs/referencias/`](referencias/).
+As capturas de referência visual estão em [`docs/evidencias/`](evidencias/). Elas registram a revisão visual anterior às interações de calendário e às animações de entrada.
