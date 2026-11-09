@@ -18,17 +18,7 @@
 - Preferir os WebP e SVG oficiais já fornecidos. Não reconstruir a marca nem gravar textos de interface dentro de imagens.
 - Preservar links externos com `target="_blank"` junto de `rel="noopener noreferrer"` e rótulos acessíveis.
 
-## Conteúdo confirmado
 
-- Evento: **Cultura Afro e Indígena — Lutas e Conquistas**.
-- Datas e unidades: Adrianópolis em 18/11/2026; Centro em 19/11/2026; ViaNorte em 24/11/2026.
-- Horário dos três encontros: 18h30–21h30.
-- Localizações específicas por cartão: área de convivência e auditório; sala e auditório; auditório.
-- As quatro experiências mostradas são as informadas no material do evento.
-- O WhatsApp `(92) 99267-3858` corresponde ao contato listado no site institucional. É um canal geral; confirme que encaminha dúvidas deste evento antes da publicação.
-- O link UNIESBAM Digital é um portal de cursos e materiais; não é inscrição para o evento.
-
-Não incluir inscrição, palestrantes, valores, certificados ou detalhes de programação sem confirmação institucional. As fontes atuais divergem sobre a carga horária de certificação.
 
 ## Validação antes de publicar
 
