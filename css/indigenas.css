@@ -27,7 +27,7 @@
 .historias__abertura { position:relative; z-index:1; max-width:620px; }
 .historias__abertura h2 { margin:0; color:#f4e8d2; font-family:'Fraunces',Georgia,serif; font-size:clamp(34px,4.2vw,56px); letter-spacing:-.04em; line-height:.95; }
 .historias__abertura h2 span { color:#ed8730; }
-.historias__abertura h2::after { display:block; width:150px; height:12px; margin:8px 0 0 28px; background:url('../assets/indigenas/05_pincelada_laranja.png') left center / 100% 100% no-repeat; content:''; }
+.historias__abertura h2::after { display:block; width:150px; height:12px; margin:8px 0 0 28px; background:url('../assets/indigenas/historias/09_pincelada_laranja.png') left center / 100% 100% no-repeat; content:''; }
 .historias__abertura p { margin:0; padding:10px 42px 10px 30px; border-left:1px solid #d49348; color:#f4e8d2; font-size:clamp(13px,1.2vw,17px); line-height:1.5; }
 .historias__nota { margin:8px 0 18px; color:#e8d9c3; font-size:11px; line-height:1.5; opacity:.88; }
 .historias__grade { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); align-items:stretch; gap:10px; }
@@ -45,7 +45,7 @@
 .historias__temas { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:24px; padding:13px 18px; border:1px solid #8d6a34; border-radius:13px; background:rgb(8 15 4 / 74%); }
 .tema-historia { display:flex; align-items:center; gap:12px; padding:3px clamp(10px,2vw,26px); }
 .tema-historia + .tema-historia { border-left:1px solid #a45b1b; }
-.tema-historia svg { flex:0 0 44px; width:44px; height:44px; fill:none; stroke:#ed7f1d; stroke-linecap:round; stroke-linejoin:round; stroke-width:2.5; }
+.tema-historia img { flex:0 0 44px; width:44px; height:44px; object-fit:contain; }
 .tema-historia h3 { margin:0 0 3px; color:#f5e8ce; font-family:'Fraunces',Georgia,serif; font-size:clamp(15px,1.45vw,20px); line-height:1.1; }
 .tema-historia p { margin:0; color:#f0e4d2; font-size:10px; line-height:1.4; }
 @media (max-width: 750px) {
