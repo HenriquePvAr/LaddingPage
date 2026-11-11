@@ -43,6 +43,25 @@
 .historia-card__fonte strong { display:flex; min-height:30px; align-items:center; justify-content:center; gap:7px; border-radius:8px; color:#fff8eb; background:#c54b05; font-family:'Fraunces',Georgia,serif; font-size:14px; }
 .historia-card__fonte:hover strong { background:#963800; }
 .historia-card__fonte-secundaria { color:#58250e; font-size:10px; line-height:1.35; text-decoration:underline; text-underline-offset:2px; }
+.vozes { padding:clamp(46px,6vw,78px) 0; color:#30180f; background:#f2e5d0 url('../assets/textura-papel.webp') center / 440px repeat; }
+.vozes__cabecalho { display:grid; max-width:840px; grid-template-columns:1fr; gap:8px; margin:0 0 26px; }
+.vozes__sobretitulo { margin:0; color:#a04a1d; font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+.vozes__cabecalho h2 { margin:0; color:#391a0e; font-family:'Fraunces',Georgia,serif; font-size:clamp(34px,4.3vw,56px); letter-spacing:-.04em; line-height:.98; }
+.vozes__cabecalho h2 span { color:#c85b14; }
+.vozes__cabecalho > p:last-child { max-width:610px; margin:3px 0 0; color:#5a4332; font-size:15px; line-height:1.55; }
+.vozes__grade { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; gap:18px; }
+.voz-card { display:flex; min-width:0; flex-direction:column; overflow:hidden; border:1px solid #cfb28d; border-radius:15px; color:#39261b; background:#fff8eb; box-shadow:0 12px 28px rgb(48 24 15 / 10%); }
+.voz-card__retrato { margin:0; background:#151c0c; }
+.voz-card__retrato img { display:block; width:100%; height:clamp(190px,20vw,270px); object-fit:cover; object-position:center 34%; }
+.voz-card__retrato figcaption { min-height:30px; padding:6px 10px; color:#eee0c8; font-size:9px; line-height:1.4; }
+.voz-card__retrato figcaption a { color:#f3ad65; text-underline-offset:2px; }
+.voz-card__corpo { display:flex; flex:1; flex-direction:column; align-items:flex-start; padding:17px 19px 19px; }
+.voz-card__povo { margin:0 0 6px; color:#966341; font-size:10px; font-weight:800; letter-spacing:.08em; line-height:1.4; text-transform:uppercase; }
+.voz-card h3 { margin:0 0 10px; color:#451f0e; font-family:'Fraunces',Georgia,serif; font-size:clamp(23px,2.1vw,30px); line-height:1; }
+.voz-card blockquote { position:relative; margin:0 0 12px; padding:2px 0 2px 14px; border-left:3px solid #d66b1c; color:#55250f; font-family:'Fraunces',Georgia,serif; font-size:clamp(17px,1.45vw,21px); font-style:italic; line-height:1.35; }
+.voz-card__bio { margin:0 0 16px; color:#4a3b30; font-size:12px; line-height:1.55; }
+.voz-card__fonte { display:inline-flex; align-items:center; gap:7px; margin-top:auto; color:#9c400d; font-size:11px; font-weight:800; line-height:1.4; text-underline-offset:3px; }
+.voz-card__fonte:hover { color:#58250e; }
 @media (max-width: 750px) {
   .ind-header__interno { min-height: 68px; }
   .ind-marca img { width: 180px; }
@@ -96,6 +115,9 @@
   .historias__grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .historia-card__imagem { height: clamp(150px, 25vw, 220px); }
   .historia-card__corpo > p { font-size: 13px; }
+  .vozes__grade { grid-template-columns:1fr; gap:14px; }
+  .voz-card { display:grid; grid-template-columns:minmax(210px,.8fr) minmax(0,1.2fr); }
+  .voz-card__retrato img { height:100%; min-height:290px; }
 }
 
 @media (max-width: 520px) {
@@ -111,4 +133,11 @@
   .historia-card__corpo { padding: 14px 16px 16px; }
   .historia-card h3 { font-size: 24px; }
   .historia-card__corpo > p { font-size: 13px; }
+  .vozes { padding-block:34px; }
+  .vozes__cabecalho { margin-bottom:18px; }
+  .vozes__cabecalho h2 { font-size:clamp(32px,9vw,42px); }
+  .vozes__cabecalho > p:last-child { font-size:13px; }
+  .voz-card { display:flex; }
+  .voz-card__retrato img { height:220px; min-height:0; }
+  .voz-card__corpo { padding:15px 16px 17px; }
 }
