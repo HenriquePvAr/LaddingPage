@@ -33,6 +33,8 @@
 .historias__grade { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); align-items:stretch; gap:10px; }
 .historia-card { display:flex; min-width:0; flex-direction:column; overflow:hidden; border:1px solid #c29d60; border-radius:14px; color:#30180f; background:#f5e5c8; box-shadow:0 10px 28px rgb(0 0 0 / 24%); }
 .historia-card__imagem { display:block; width:100%; height:clamp(112px,10vw,152px); object-fit:cover; }
+.historia-card__figura { position:relative; margin:0; }
+.historia-card__figura figcaption { padding:4px 9px; color:#fff1d9; background:rgb(17 25 7 / 82%); font-size:9px; line-height:1.3; }
 .historia-card__corpo { display:flex; flex:1; flex-direction:column; align-items:stretch; padding:12px 14px 13px; }
 .historia-card h3 { margin:0 0 7px; color:#411c0e; font-family:'Fraunces',Georgia,serif; font-size:clamp(19px,1.65vw,25px); line-height:1.05; }
 .historia-card h3::after { display:block; width:56px; height:5px; margin-top:6px; border-radius:100%; background:#d7650c; content:''; transform:rotate(-2deg); }
