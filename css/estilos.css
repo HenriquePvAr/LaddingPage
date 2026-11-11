@@ -143,6 +143,74 @@ h1, h2, h3 { margin-top: 0; font-family: 'Fraunces', Georgia, serif; letter-spac
 .rodape__canais .icone-externo { width: 13px; height: 13px; fill: none; stroke: var(--dourado); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.4; }
 .rodape__evento > p + p { margin-top: 10px; }
 .rodape__base { display: flex; justify-content: space-between; gap: 14px; padding-top: 11px; border-top: 1px solid rgb(255 248 235 / 18%); color: #c6ae94; font-size: 8px; }
+
+.carrossel { position: relative; }
+.carrossel__janela { overflow: hidden; overflow: clip; }
+.carrossel__trilho { display: flex; align-items: center; transition: transform 600ms cubic-bezier(.22, .61, .36, 1); }
+.carrossel__slide { flex: 0 0 100%; min-width: 0; }
+.carrossel__controles { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 26px; }
+.carrossel__seta { display: inline-grid; width: 40px; height: 40px; place-items: center; padding: 0; border: 1px solid var(--terracota); border-radius: 50%; color: var(--terracota); background: transparent; font: 700 16px 'Manrope', Arial, sans-serif; cursor: pointer; }
+.carrossel__seta:hover { color: white; background: var(--terracota); }
+.carrossel__pontos { display: flex; gap: 10px; }
+.carrossel__pontos button { width: 10px; height: 10px; padding: 0; border: 1px solid var(--terracota); border-radius: 999px; background: transparent; cursor: pointer; transition: width 300ms ease, background-color 300ms ease; }
+.carrossel__pontos button[aria-current="true"] { width: 28px; background: var(--terracota); }
+.carrossel__pausa { min-height: 32px; margin-left: 6px; padding: 0 14px; border: 1px solid var(--terracota); border-radius: 999px; color: var(--terracota); background: transparent; font: 700 11px 'Manrope', Arial, sans-serif; cursor: pointer; }
+.carrossel__pausa:hover, .carrossel__pausa[aria-pressed="true"] { color: white; background: var(--terracota); }
+.projeto__imagem { width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; font: inherit; }
+.projeto__imagem img { transition: transform .35s ease; }
+.projeto__imagem:hover img, .projeto__imagem:focus-visible img { transform: scale(1.03); }
+.projeto__imagem:focus-visible { outline: 3px solid var(--dourado); outline-offset: 6px; border-radius: 18px; }
+.projeto__selo { position: absolute; z-index: 2; right: 10%; bottom: 14px; padding: 7px 14px; border-radius: 999px; color: var(--creme); background: var(--espresso); font-size: 11px; font-weight: 800; letter-spacing: .04em; box-shadow: 0 8px 18px rgb(41 25 20 / 22%); }
+.bio-modal { width: min(680px, calc(100vw - 24px)); max-height: calc(100vh - 32px); padding: 0; border: 1px solid #d7b994; border-radius: 20px; color: var(--espresso); background: var(--creme); box-shadow: 0 24px 60px rgb(29 18 14 / 35%); }
+.bio-modal::backdrop { background: rgb(29 18 14 / 62%); }
+.bio-modal__corpo { position: relative; padding: 30px 40px 36px; }
+.bio-modal__imagem { display: block; width: auto; max-width: 100%; height: 220px; margin: 0 auto 18px; object-fit: contain; }
+.bio-modal .sobretitulo { margin-bottom: -4px; font-size: 12px; letter-spacing: .32em; }
+.bio-modal h2 { margin: 0 0 12px; font-size: 52px; line-height: 1; }
+.bio-modal h3 { margin: 22px 0 8px; color: var(--terracota); font-size: 20px; }
+.bio-modal p:not(.sobretitulo), .bio-modal li { color: var(--texto-suave); font-size: 14px; line-height: 1.6; }
+.bio-modal ul { margin: 0; padding-left: 18px; }
+.bio-modal li + li { margin-top: 8px; }
+.bio-modal strong { color: var(--espresso); }
+.bio-modal__fechar { position: sticky; top: 0; float: right; width: 40px; height: 40px; margin: -12px -20px 0 0; padding: 0; border: 1px solid var(--terracota); border-radius: 50%; color: var(--terracota); background: var(--creme); font: 400 24px/1 'Manrope', Arial, sans-serif; cursor: pointer; }
+.bio-modal__fechar:hover { color: white; background: var(--terracota); }
+.bio-modal__fechar:focus-visible { outline: 3px solid var(--dourado); outline-offset: 3px; }
+body.modal-aberto { overflow: hidden; }
+.carrossel__seta:focus-visible, .carrossel__pontos button:focus-visible { outline: 3px solid var(--dourado); outline-offset: 3px; }
+
+.chamado-museu { padding-block: 8px 36px; background: var(--pergaminho); }
+.chamado-museu__grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.chamado-museu__cartao { display: flex; flex-direction: column; align-items: flex-start; padding: 28px 32px; border: 1px solid var(--terracota); border-radius: 18px; color: inherit; background: var(--creme); text-decoration: none; }
+.chamado-museu__cartao:hover { background: #fff4e2; }
+.chamado-museu h2 { margin: 0 0 10px; font-size: clamp(28px, 3vw, 38px); }
+.chamado-museu p:not(.sobretitulo) { max-width: 760px; margin: 0 0 16px; color: var(--texto-suave); font-size: 14px; line-height: 1.55; }
+.chamado-museu__acao { display: inline-flex; margin-top: auto; align-items: center; gap: 10px; color: var(--terracota); font-size: 13px; font-weight: 800; }
+
+.atalho-chat { position: fixed; z-index: 25; right: 18px; bottom: 18px; display: flex; width: 72px; flex-direction: column; align-items: center; gap: 2px; padding: 0; border: 0; background: transparent; cursor: pointer; transition: transform .2s ease; }
+.atalho-chat__icone { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 8px 14px rgb(41 25 20 / 30%)); }
+.atalho-chat__rotulo { width: 66px; height: auto; filter: drop-shadow(0 4px 8px rgb(41 25 20 / 25%)); }
+.atalho-chat:hover, .atalho-chat:focus-visible { transform: translateY(-3px); }
+.atalho-chat:focus-visible { outline: 3px solid var(--dourado); outline-offset: 4px; border-radius: 12px; }
+.painel-chat { position: fixed; z-index: 26; right: 18px; bottom: 116px; display: flex; width: min(360px, calc(100vw - 24px)); max-height: min(560px, calc(100vh - 136px)); flex-direction: column; overflow: hidden; border: 1px solid #d7b994; border-radius: 18px; color: var(--espresso); background: var(--creme); box-shadow: 0 18px 40px rgb(41 25 20 / 22%); }
+.painel-chat[hidden] { display: none; }
+.painel-chat__cabeca { display: grid; grid-template-columns: 42px 1fr auto; align-items: center; gap: 10px; padding: 12px 12px 10px; color: var(--creme); background: var(--espresso-profundo); }
+.painel-chat__cabeca img { width: 42px; height: 42px; object-fit: contain; }
+.painel-chat__nome { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 18px; line-height: 1.1; }
+.painel-chat__estado { margin: 2px 0 0; color: #ddc9b1; font-size: 10px; }
+.painel-chat__fechar { padding: 6px 10px; border: 1px solid rgb(255 248 235 / 40%); border-radius: 999px; color: var(--creme); background: transparent; font: 700 11px 'Manrope', Arial, sans-serif; cursor: pointer; }
+.painel-chat__mensagens { display: flex; min-height: 160px; flex: 1; flex-direction: column; gap: 8px; overflow: auto; padding: 14px; }
+.painel-chat__balao { max-width: 88%; margin: 0; padding: 8px 10px; border-radius: 12px; font-size: 13px; line-height: 1.45; }
+.painel-chat__balao--bot { align-self: flex-start; background: #f3e2c8; }
+.painel-chat__balao--pessoa { align-self: flex-end; color: var(--creme); background: var(--terracota); }
+.painel-chat__balao a { font-weight: 800; }
+.painel-chat__sugestoes { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 10px; }
+.painel-chat__sugestoes button, .painel-chat__formulario button { border: 1px solid var(--terracota); border-radius: 999px; color: var(--terracota); background: transparent; font: 700 11px 'Manrope', Arial, sans-serif; cursor: pointer; }
+.painel-chat__sugestoes button { padding: 6px 10px; }
+.painel-chat__sugestoes button:hover, .painel-chat__formulario button:hover { color: white; background: var(--terracota); }
+.painel-chat__formulario { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid #e5d3b8; }
+.painel-chat__rotulo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.painel-chat__formulario input { min-width: 0; padding: 10px 12px; border: 1px solid #d7b994; border-radius: 999px; color: var(--espresso); background: white; font: 500 13px 'Manrope', Arial, sans-serif; }
+.painel-chat__formulario button { padding: 0 14px; }
 .rodape__credito { color: #ab957e; }
 
 @media (max-width: 900px) {
@@ -195,6 +263,15 @@ h1, h2, h3 { margin-top: 0; font-family: 'Fraunces', Georgia, serif; letter-spac
   .projeto__texto { margin: 0 0 0 10px; padding-left: 18px; }
   .projeto h2 { font-size: clamp(58px, 16vw, 76px); }
   .projeto__texto > p:not(.sobretitulo) { font-size: 12px; }
+  .chamado-museu { padding-bottom: 28px; }
+  .chamado-museu__cartao { padding: 20px 16px; }
+  .atalho-chat { right: 10px; bottom: 10px; width: 58px; }
+  .atalho-chat__icone { width: 50px; height: 50px; }
+  .atalho-chat__rotulo { width: 54px; }
+  .painel-chat { right: 10px; bottom: 92px; max-height: min(560px, calc(100vh - 104px)); }
+  .chamado-museu__grade { grid-template-columns: 1fr; }
+  .bio-modal__corpo { padding: 22px 18px 26px; }
+  .bio-modal h2 { font-size: 40px; }
   .datas { padding-block: 8px 42px; }
   .datas__titulo { gap: 10px; margin-bottom: 16px; font-size: 9px; letter-spacing: .2em; }
   .datas__titulo::before, .datas__titulo::after { width: 22px; }
@@ -247,4 +324,5 @@ h1, h2, h3 { margin-top: 0; font-family: 'Fraunces', Georgia, serif; letter-spac
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .revelar { opacity: 1; transform: none; transition: none; }
+  .carrossel__trilho, .carrossel__pontos button { transition: none; }
 }
