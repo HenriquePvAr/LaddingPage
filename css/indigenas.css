@@ -43,12 +43,6 @@
 .historia-card__fonte strong { display:flex; min-height:30px; align-items:center; justify-content:center; gap:7px; border-radius:8px; color:#fff8eb; background:#c54b05; font-family:'Fraunces',Georgia,serif; font-size:14px; }
 .historia-card__fonte:hover strong { background:#963800; }
 .historia-card__fonte-secundaria { color:#58250e; font-size:10px; line-height:1.35; text-decoration:underline; text-underline-offset:2px; }
-.historias__temas { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:24px; padding:13px 18px; border:1px solid #8d6a34; border-radius:13px; background:rgb(8 15 4 / 74%); }
-.tema-historia { display:flex; align-items:center; gap:12px; padding:3px clamp(10px,2vw,26px); }
-.tema-historia + .tema-historia { border-left:1px solid #a45b1b; }
-.tema-historia img { flex:0 0 44px; width:44px; height:44px; object-fit:contain; }
-.tema-historia h3 { margin:0 0 3px; color:#f5e8ce; font-family:'Fraunces',Georgia,serif; font-size:clamp(15px,1.45vw,20px); line-height:1.1; }
-.tema-historia p { margin:0; color:#f0e4d2; font-size:10px; line-height:1.4; }
 @media (max-width: 750px) {
   .ind-header__interno { min-height: 68px; }
   .ind-marca img { width: 180px; }
@@ -117,7 +111,4 @@
   .historia-card__corpo { padding: 14px 16px 16px; }
   .historia-card h3 { font-size: 24px; }
   .historia-card__corpo > p { font-size: 13px; }
-  .historias__temas { grid-template-columns: 1fr; gap: 10px; margin-top: 18px; padding: 12px 8px; }
-  .tema-historia { padding: 8px 12px; }
-  .tema-historia + .tema-historia { border-top: 1px solid #a45b1b; border-left: 0; }
 }
