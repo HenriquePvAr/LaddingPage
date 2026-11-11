@@ -1,0 +1,56 @@
+.pagina-indigenas { min-height: 100vh; color: #f4e6cd; background: #101608; }
+.ind-header { position: relative; z-index: 5; color: #fffaf0; background: rgb(5 10 2 / 88%); }
+.ind-header__interno { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 28px; }
+.ind-marca { display: inline-flex; flex: 0 0 auto; align-items: center; }
+.ind-marca img { width: clamp(190px, 20vw, 270px); height: auto; }
+.ind-navegacao { position: static; display: flex; align-items: center; justify-content: flex-end; gap: clamp(24px, 4vw, 60px); color: #fffaf0; background: transparent; box-shadow: none; }
+.ind-navegacao a { position: relative; padding: 10px 0; color: #fffaf0; font-size: clamp(14px, 1.55vw, 20px); font-weight: 500; text-decoration: none; white-space: nowrap; }
+.ind-navegacao a:hover { color: #f2a052; }
+.ind-navegacao a.ativo::after { position: absolute; right: -12px; bottom: -5px; left: -12px; height: 5px; background: url('../assets/indigenas/09_sublinhado_menu.svg') center / 100% 100% no-repeat; content: ''; }
+.pagina-indigenas .menu-alternar { display: none; border-color: rgb(255 250 240 / 48%); }
+.pagina-indigenas .menu-alternar span { background: #fffaf0; }
+.ind-hero { position: relative; isolation: isolate; display: flex; min-height: clamp(620px, 60vw, 820px); align-items: center; overflow: hidden; background: #101b08 url('../assets/indigenas/04_fundo_floresta_escurecida.webp') center / cover no-repeat; }
+.ind-hero::before { position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg, rgb(7 13 3 / 80%) 0%, rgb(7 13 3 / 40%) 46%, transparent 78%); content: ''; pointer-events: none; }
+.ind-hero__copy { position: relative; z-index: 2; width: min(47%, 730px); margin: 0 0 2vw 6.4%; }
+.ind-hero h1 { margin: 0; color: #f4e6cd; font-family: 'Fraunces', Georgia, serif; font-size: clamp(58px, 6.5vw, 112px); font-weight: 700; letter-spacing: -.045em; line-height: .93; }
+.ind-hero h1 span { color: #e58b44; }
+.ind-hero__pincelada { display: block; width: min(300px, 65%); height: auto; margin: 20px 0 24px; }
+.ind-hero__copy p { max-width: 600px; margin: 0; color: #f4f1e9; font-size: clamp(17px, 1.8vw, 29px); line-height: 1.45; }
+.ind-hero__personagem { position: absolute; z-index: 1; right: -2%; bottom: -21%; width: 53%; max-width: 970px; height: auto; pointer-events: none; }
+.ind-hero__papel { position: absolute; z-index: 3; right: 0; bottom: -3px; left: 0; width: 100%; height: 53px; object-fit: fill; pointer-events: none; }
+.pagina-indigenas a:focus-visible, .pagina-indigenas button:focus-visible { outline: 3px solid #f2a052; outline-offset: 4px; }
+
+@media (max-width: 750px) {
+  .ind-header__interno { min-height: 68px; }
+  .ind-marca img { width: 180px; }
+  .ind-navegacao { gap: 18px; }
+  .ind-navegacao a { font-size: 14px; }
+  .ind-hero { min-height: 800px; align-items: flex-start; }
+  .ind-hero::before { background: linear-gradient(90deg, rgb(7 13 3 / 83%) 0%, rgb(7 13 3 / 45%) 78%, rgb(7 13 3 / 20%) 100%); }
+  .ind-hero__copy { width: 85%; margin: 72px 0 0 7%; }
+  .ind-hero h1 { font-size: clamp(58px, 12vw, 78px); }
+  .ind-hero__pincelada { width: min(280px, 70%); margin: 17px 0 20px; }
+  .ind-hero__copy p { max-width: 78%; font-size: 18px; }
+  .ind-hero__personagem { right: -36%; bottom: -6%; width: 100%; opacity: .9; }
+  .ind-hero__papel { height: 35px; }
+}
+
+@media (max-width: 520px) {
+  .ind-header__interno { min-height: 64px; }
+  .ind-marca img { width: 155px; }
+  .pagina-indigenas .menu-alternar { display: grid; }
+  .pagina-indigenas .ind-navegacao { position: absolute; top: 100%; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 18px 16px; background: #101608; box-shadow: 0 10px 15px rgb(0 0 0 / 25%); }
+  .pagina-indigenas .ind-navegacao--aberta { display: flex; }
+  .ind-navegacao a { padding: 12px 8px; border-bottom: 1px solid rgb(255 250 240 / 16%); font-size: 15px; }
+  .ind-navegacao a.ativo::after { right: auto; bottom: 4px; left: 8px; width: 80px; height: 4px; }
+  .ind-hero { min-height: max(740px, calc(100svh - 64px)); }
+  .ind-hero__copy { width: 87%; margin: 58px 0 0 6%; }
+  .ind-hero h1 { font-size: clamp(54px, 14vw, 68px); }
+  .ind-hero__pincelada { width: 62%; margin-block: 16px 18px; }
+  .ind-hero__copy p { max-width: 84%; font-size: 16px; }
+  .ind-hero__personagem { right: -47%; bottom: -2%; width: 122%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ind-hero *, .ind-header * { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
