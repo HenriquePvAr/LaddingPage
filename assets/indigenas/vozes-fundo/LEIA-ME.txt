@@ -1,0 +1,16 @@
+ASSETS SEPARADOS — FUNDO «VOZES E TRAJETÓRIAS INDÍGENAS»
+
+00_fundo_completo_sem_textos.png — A arte aprovada com ornamentos, sem título, parágrafo ou menu; é a opção mais fiel.
+01_textura_papel_limpa.png — Fundo de papel sem ilustrações nem textos, para usar com os elementos em camadas.
+02_araras_transparente.png — Duas araras ilustradas (transparência).
+03_folhas_superiores_transparente.png — Folhas superiores à direita (transparência).
+04_plumaria_flechas_ceramica.png — Conjunto original ilustrado do canto inferior esquerdo, com plumária, flechas e cerâmica (transparência).
+05_ceramica_decorativa.png — Detalhe isolado do vaso de cerâmica (transparência).
+06_paisagem_maloca_rio_transparente.png — Paisagem, maloca, floresta, rio e canoa, isolada com transparência suave.
+07_grafismo_inferior_transparente.png — Grafismo retirado da arte original (transparência).
+08_traco_laranja.png / .svg — Pincelada para títulos, pronta para reutilizar.
+09_grafismo_repetivel.svg — Padrão geométrico vetorial editável; não representa grafismo autenticado de um povo específico.
+
+Para reproduzir exatamente a imagem de referência, o mais fácil é usar o arquivo 00 como background-size: cover e recriar o título e a descrição em HTML/CSS. Para maior controle responsivo, use o arquivo 01 com os elementos 02-09 como imagens posicionadas.
+
+OBSERVAÇÃO: A imagem é uma ilustração conceitual gerada, não um registro documental nem uma referência específica a um povo indígena.

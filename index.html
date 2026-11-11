@@ -20,7 +20,7 @@
   <script src="js/script.js" defer></script>
 </head>
 
-<body>
+<body class="pagina-inicial">
   <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
   <header class="cabecalho" id="inicio">
     <div class="container cabecalho__interno">
@@ -33,9 +33,8 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="navegacao" id="navegacao-principal" aria-label="Navegação principal">
-        <a href="#projeto">O projeto</a><a href="#experiencias">Experiências</a><a href="indigenas.html">Ind&iacute;gena</a><a href="#datas">Datas e locais</a><a
-          href="#contato">Contato</a><a class="navegacao__cta" href="#datas">Ver datas e locais <span
-            aria-hidden="true">→</span></a>
+        <a href="#experiencias">Experiências</a><a href="indigenas.html">Ind&iacute;gena</a><a href="#datas">Datas e locais</a><a
+          href="#contato">Contato</a><a class="navegacao__cta" href="#datas">Ver datas e locais</a>
       </nav>
     </div>
   </header>
@@ -50,8 +49,8 @@
           <p class="hero__descricao">Vozes de mulheres negras e indígenas. Memórias de resistência e conquistas que
             seguem transformando o presente.</p>
           <div class="hero__acoes">
-            <a class="botao botao--principal" href="#datas">Ver datas e locais <span aria-hidden="true">→</span></a>
-            <a class="botao botao--secundario" href="#projeto">Conhecer o projeto <span aria-hidden="true">↘</span></a>
+            <a class="botao botao--principal" href="#datas">Ver datas e locais</a>
+            <a class="botao botao--secundario" href="#projeto">Conhecer o projeto</a>
           </div>
           <p class="hero__agenda">18 <span>•</span> 19 <span>•</span> 24 NOV <i>—</i> MANAUS/AM</p>
         </div>
@@ -88,7 +87,7 @@
                   negras e indígenas.</p>
                 <p>Um espaço de encontro para refletir sobre memória, lutas, conquistas, cultura, educação e
                   ancestralidade — reconhecendo saberes que constroem o presente e abrem caminhos para o futuro.</p>
-                <a class="link-seta" href="#experiencias">Explore as experiências <span aria-hidden="true">→</span></a>
+                <a class="link-seta" href="#experiencias">Explore as experiências</a>
               </div>
             </article>
             <article class="carrossel__slide projeto__grade" id="marielle" role="group" aria-roledescription="slide"
@@ -105,19 +104,10 @@
                 </p>
                 <p>Denunciou a violência do Estado e insistiu no direito à cidade, à memória e à vida digna. Assassinada
                   em 14 de março de 2018, segue como referência das lutas e conquistas que este encontro celebra.</p>
-                <a class="link-seta" href="#datas">Ver datas e locais <span aria-hidden="true">→</span></a>
+                <a class="link-seta" href="#datas">Ver datas e locais</a>
               </div>
             </article>
           </div>
-        </div>
-        <div class="carrossel__controles">
-          <button class="carrossel__seta" type="button" data-direcao="-1" aria-label="Slide anterior">←</button>
-          <div class="carrossel__pontos">
-            <button type="button" aria-label="Mostrar Falas de Maria" aria-current="true"></button>
-            <button type="button" aria-label="Mostrar Marielle Franco"></button>
-          </div>
-          <button class="carrossel__seta" type="button" data-direcao="1" aria-label="Próximo slide">→</button>
-          <button class="carrossel__pausa" type="button" aria-pressed="false">Pausar</button>
         </div>
       </div>
     </section>
@@ -126,35 +116,41 @@
       <div class="container">
         <h2 class="datas__titulo" id="titulo-datas">Visite a exposição</h2>
         <div class="datas__grade">
-          <article class="cartao-data"><img class="cartao-data__icone" src="assets/icone-calendario.svg" alt=""
-              aria-hidden="true">
-            <div class="cartao-data__conteudo"><time class="cartao-data__dia" datetime="2026-11-18">18 NOV</time>
+          <article class="cartao-data">
+            <img class="cartao-data__icone" src="assets/icone-calendario.svg" alt="" aria-hidden="true">
+            <div class="cartao-data__conteudo">
+              <time class="cartao-data__dia" datetime="2026-11-18">18 NOV</time>
               <h3>Adrianópolis</h3>
               <p class="cartao-data__local">Área de convivência e auditório</p>
-              <p class="cartao-data__horario"><img src="assets/icone-relogio.svg" alt="" aria-hidden="true">18h30 —
-                21h30</p>
+              <p class="cartao-data__endereco">Rua Leonor Teles, 153 · Conj. Abílio Nery · Adrianópolis</p>
+              <p class="cartao-data__horario"><img src="assets/icone-relogio.svg" alt="" aria-hidden="true">18h30 — 21h30</p>
+              <a class="cartao-data__mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Leonor+Teles%2C+153%2C+Conjunto+Ab%C3%ADlio+Nery%2C+Adrian%C3%B3polis%2C+Manaus+-+AM" target="_blank" rel="noopener noreferrer">Ver localização</a>
             </div>
           </article>
-          <article class="cartao-data"><img class="cartao-data__icone" src="assets/icone-calendario.svg" alt=""
-              aria-hidden="true">
-            <div class="cartao-data__conteudo"><time class="cartao-data__dia" datetime="2026-11-19">19 NOV</time>
+          <article class="cartao-data">
+            <img class="cartao-data__icone" src="assets/icone-calendario.svg" alt="" aria-hidden="true">
+            <div class="cartao-data__conteudo">
+              <time class="cartao-data__dia" datetime="2026-11-19">19 NOV</time>
               <h3>Centro</h3>
               <p class="cartao-data__local">Sala e auditório</p>
-              <p class="cartao-data__horario"><img src="assets/icone-relogio.svg" alt="" aria-hidden="true">18h30 —
-                21h30</p>
+              <p class="cartao-data__endereco">Av. Leonardo Malcher, 1086 · Centro</p>
+              <p class="cartao-data__horario"><img src="assets/icone-relogio.svg" alt="" aria-hidden="true">18h30 — 21h30</p>
+              <a class="cartao-data__mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+Leonardo+Malcher%2C+1086%2C+Centro%2C+Manaus+-+AM" target="_blank" rel="noopener noreferrer">Ver localização</a>
             </div>
           </article>
-          <article class="cartao-data"><img class="cartao-data__icone" src="assets/icone-calendario.svg" alt=""
-              aria-hidden="true">
-            <div class="cartao-data__conteudo"><time class="cartao-data__dia" datetime="2026-11-24">24 NOV</time>
+          <article class="cartao-data">
+            <img class="cartao-data__icone" src="assets/icone-calendario.svg" alt="" aria-hidden="true">
+            <div class="cartao-data__conteudo">
+              <time class="cartao-data__dia" datetime="2026-11-24">24 NOV</time>
               <h3>ViaNorte</h3>
-              <p class="cartao-data__local">Auditório</p>
-              <p class="cartao-data__horario"><img src="assets/icone-relogio.svg" alt="" aria-hidden="true">18h30 —
-                21h30</p>
+              <p class="cartao-data__local">Auditório · Shopping Manaus ViaNorte · Piso G2</p>
+              <p class="cartao-data__endereco">Av. Arquiteto José Henrique Bento Rodrigues, 3541 · Santa Etelvina</p>
+              <p class="cartao-data__horario"><img src="assets/icone-relogio.svg" alt="" aria-hidden="true">18h30 — 21h30</p>
+              <a class="cartao-data__mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+Arquiteto+Jos%C3%A9+Henrique+Bento+Rodrigues%2C+3541%2C+Shopping+Manaus+ViaNorte%2C+Manaus+-+AM" target="_blank" rel="noopener noreferrer">Ver localização</a>
             </div>
           </article>
         </div>
-        <p class="datas__nota">Endereços completos serão divulgados após confirmação institucional.</p>
+        <p class="datas__nota">Endereços conforme <a href="https://esbam.edu.br/direito/" target="_blank" rel="noopener noreferrer">site oficial da UNIESBAM</a>.</p>
       </div>
     </section>
 
@@ -188,18 +184,30 @@
 
     <section class="chamado-museu" aria-label="Museus para visitar">
       <div class="container chamado-museu__grade">
-        <a class="chamado-museu__cartao" href="https://museudasculturasindigenas.org.br/" target="_blank" rel="noopener noreferrer">
-          <p class="sobretitulo">Programação gratuita</p>
-          <h2>Museu das Culturas Indígenas</h2>
-          <p>Em São Paulo, o museu abre exposições e uma agenda cultural para o público. Às quintas-feiras, a entrada é gratuita para todas as pessoas; indígenas entram sem custo todos os dias. No site estão a Feira de Artes Manuais Indígenas, o cineclube, as ações para famílias e o restante da programação.</p>
-          <span class="chamado-museu__acao">Ver a programação no site <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="chamado-museu__cartao" href="https://www.muncab.com.br/" target="_blank" rel="noopener noreferrer">
-          <p class="sobretitulo">Entrada gratuita às quartas e domingos</p>
-          <h2>Museu Nacional da Cultura Afro-Brasileira</h2>
-          <p>O MUNCAB fica no Centro Histórico de Salvador (BA), perto do Elevador Lacerda. Às quartas-feiras e aos domingos a entrada é gratuita, com reserva online. Em cartaz está “OMI TUTU – Água Fresca”, de Hariel Revignet, e de 10 a 13 de dezembro o museu recebe o Festival Paisagem Sonora.</p>
-          <span class="chamado-museu__acao">Conhecer o MUNCAB <span aria-hidden="true">→</span></span>
-        </a>
+        <article class="chamado-museu__cartao">
+          <figure class="chamado-museu__figura">
+            <img class="chamado-museu__imagem" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Inaugura%C3%A7%C3%A3o_do_Museu_das_Culturas_Ind%C3%ADgenas_%2852183066389%29.jpg/1280px-Inaugura%C3%A7%C3%A3o_do_Museu_das_Culturas_Ind%C3%ADgenas_%2852183066389%29.jpg" alt="Interior do Museu das Culturas Indígenas durante a inauguração." loading="lazy">
+            <figcaption>Foto: Governo do Estado de São Paulo · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Inaugura%C3%A7%C3%A3o_do_Museu_das_Culturas_Ind%C3%ADgenas_(52183066389).jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></figcaption>
+          </figure>
+          <div class="chamado-museu__corpo">
+            <p class="sobretitulo">Programação gratuita</p>
+            <h2>Museu das Culturas Indígenas</h2>
+            <p>Em São Paulo, o museu abre exposições e uma agenda cultural para o público. Às quintas-feiras, a entrada é gratuita para todas as pessoas; indígenas entram sem custo todos os dias. No site estão a Feira de Artes Manuais Indígenas, o cineclube, as ações para famílias e o restante da programação.</p>
+            <a class="chamado-museu__acao" href="https://museudasculturasindigenas.org.br/" target="_blank" rel="noopener noreferrer">Ver a programação no site</a>
+          </div>
+        </article>
+        <article class="chamado-museu__cartao">
+          <figure class="chamado-museu__figura">
+            <img class="chamado-museu__imagem" src="https://upload.wikimedia.org/wikipedia/commons/8/87/Muncab.JPG" alt="Fachada do Museu Nacional da Cultura Afro-Brasileira, em Salvador." loading="lazy">
+            <figcaption>Foto: Pá Freitas · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Muncab.JPG" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></figcaption>
+          </figure>
+          <div class="chamado-museu__corpo">
+            <p class="sobretitulo">Entrada gratuita às quartas e domingos</p>
+            <h2>Museu Nacional da Cultura Afro-Brasileira</h2>
+            <p>O MUNCAB fica no Centro Histórico de Salvador (BA), perto do Elevador Lacerda. Às quartas-feiras e aos domingos a entrada é gratuita, com reserva online. Em cartaz está “OMI TUTU – Água Fresca”, de Hariel Revignet, e de 10 a 13 de dezembro o museu recebe o Festival Paisagem Sonora.</p>
+            <a class="chamado-museu__acao" href="https://www.muncab.com.br/" target="_blank" rel="noopener noreferrer">Conhecer o MUNCAB</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -210,8 +218,7 @@
           <p class="sobretitulo">Faça parte desse encontro</p>
           <h2 id="titulo-convite">Sua presença também faz parte dessa história.</h2>
           <p>Participe de encontros que celebram a memória, a identidade e as conquistas dos povos afro-brasileiros e
-            indígenas.</p><a class="botao botao--principal" href="#datas">Ver datas e locais <span
-              aria-hidden="true">→</span></a>
+            indígenas.</p><a class="botao botao--principal" href="#datas">Ver datas e locais</a>
         </div>
       </div>
     </section>
@@ -223,11 +230,11 @@
         <a class="marca marca--rodape" href="#inicio" aria-label="UNIESBAM — início"><img class="marca__imagem"
             src="assets/logo-uniesbam-oficial-branca.png" alt="UNIESBAM — Centro Universitário ESBAM" width="703"
             height="106"></a>
-        <p>Centro Universitário ESBAM<br>Manaus — Amazonas</p>
+        <p>Centro Universitário ESBAM<br>Manaus, Amazonas</p>
       </div>
       <nav class="rodape__navegacao" aria-label="Navegação do rodapé">
         <h2>Navegue</h2>
-        <a href="#projeto">O projeto</a><a href="#falas-de-maria">Falas de Maria</a><a href="#marielle">Marielle
+        <a href="#falas-de-maria">Falas de Maria</a><a href="#marielle">Marielle
           Franco</a><a href="#experiencias">Experiências</a><a href="#datas">Datas e locais</a>
       </nav>
       <div class="rodape__canais">
@@ -237,21 +244,14 @@
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="9" />
             <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
-          </svg><span>Site institucional</span><svg class="icone-externo" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M6 3h7v7M13 3 6 10" />
-            <path d="M11 9v4H3V5h4" />
-          </svg>
+          </svg><span>Site institucional</span><svg class="icone-externo" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 6 10"/><path d="M11 9v4H3V5h4"/></svg>
         </a>
         <a href="https://uniesbamdigital.esbam.edu.br/" target="_blank" rel="noopener noreferrer"
           aria-label="UNIESBAM Digital, portal de cursos e materiais, abre em nova aba">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="m2 8 10-5 10 5-10 5L2 8Z" />
             <path d="M6 10v6c3 3 9 3 12 0v-6M22 8v7" />
-          </svg><span>UNIESBAM Digital<small>Cursos e materiais</small></span><svg class="icone-externo"
-            viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M6 3h7v7M13 3 6 10" />
-            <path d="M11 9v4H3V5h4" />
-          </svg>
+          </svg><span>UNIESBAM Digital<small>Cursos e materiais</small></span><svg class="icone-externo" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 6 10"/><path d="M11 9v4H3V5h4"/></svg>
         </a>
         <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer"
           aria-label="WhatsApp ESBAM, (92) 99267-3858, abre em nova aba">
@@ -259,11 +259,7 @@
             <path d="M20.5 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.2-4.5a8.5 8.5 0 1 1 16.3-4Z" />
             <path
               d="M8 8.2c.5 3 2.8 5.3 5.8 5.8l1.2-1.2 2 .8c-.2 1.2-1.1 2-2.3 2-3.8-.2-7.5-3.9-7.7-7.7 0-1.2.8-2.1 2-2.3l.8 2L8 8.2Z" />
-          </svg><span>WhatsApp ESBAM<small>(92) 99267-3858</small></span><svg class="icone-externo" viewBox="0 0 16 16"
-            aria-hidden="true">
-            <path d="M6 3h7v7M13 3 6 10" />
-            <path d="M11 9v4H3V5h4" />
-          </svg>
+          </svg><span>WhatsApp ESBAM<small>(92) 99267-3858</small></span><svg class="icone-externo" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 6 10"/><path d="M11 9v4H3V5h4"/></svg>
         </a>
       </div>
     </div>

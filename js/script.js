@@ -87,6 +87,35 @@ if (cabecalho) {
   window.addEventListener('scroll', atualizarEstadoDoCabecalho, { passive: true });
 }
 
+// Parallax sutil na imagem do hero indígena em dispositivos com mouse.
+const heroIndigena = document.querySelector('.ind-hero');
+if (heroIndigena && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const imagemHero = heroIndigena.querySelector('.ind-hero__personagem');
+  let quadroHero = 0;
+
+  heroIndigena.addEventListener('pointermove', (evento) => {
+    if (quadroHero) return;
+    quadroHero = window.requestAnimationFrame(() => {
+      const area = heroIndigena.getBoundingClientRect();
+      const x = Math.max(0, Math.min(1, (evento.clientX - area.left) / area.width));
+      const y = Math.max(0, Math.min(1, (evento.clientY - area.top) / area.height));
+      heroIndigena.style.setProperty('--hero-luz-x', `${x * 100}%`);
+      heroIndigena.style.setProperty('--hero-luz-y', `${y * 100}%`);
+      imagemHero?.style.setProperty('--hero-parallax-x', `${(x - .5) * -12}px`);
+      imagemHero?.style.setProperty('--hero-parallax-y', `${(y - .5) * -10}px`);
+      quadroHero = 0;
+    });
+  });
+
+  heroIndigena.addEventListener('pointerleave', () => {
+    heroIndigena.style.removeProperty('--hero-luz-x');
+    heroIndigena.style.removeProperty('--hero-luz-y');
+    imagemHero?.style.removeProperty('--hero-parallax-x');
+    imagemHero?.style.removeProperty('--hero-parallax-y');
+  });
+}
+
 // Escapa caracteres reservados pelo formato de calendário iCalendar.
 function escaparTextoDoCalendario(texto) {
   return texto
@@ -154,7 +183,7 @@ document.querySelectorAll('.cartao-data').forEach((cartao) => {
 // Revela blocos editoriais conforme entram na tela, com atraso leve entre cards.
 if ('IntersectionObserver' in window) {
   const elementosRevelados = document.querySelectorAll(
-    '.hero__texto, .hero__arte, .manifesto__interno, .projeto__imagem, .projeto__texto, .cartao-data, .cartao-experiencia, .chamado-museu__cartao, .convite__arte, .convite__texto, .rodape__grade > *',
+    '.hero__texto, .hero__arte, .manifesto__interno, .projeto__imagem, .projeto__texto, .cartao-data, .cartao-experiencia, .chamado-museu__cartao, .convite__arte, .convite__texto, .historias__abertura, .historias__nota, .historia-card, .rodape__grade > *',
   );
 
   const observadorDeRevelacao = new IntersectionObserver((entradas, observador) => {
@@ -168,7 +197,7 @@ if ('IntersectionObserver' in window) {
 
   elementosRevelados.forEach((elemento, indice) => {
     elemento.classList.add('revelar');
-    if (elemento.matches('.cartao-data, .cartao-experiencia')) {
+    if (elemento.matches('.cartao-data, .cartao-experiencia, .historia-card')) {
       elemento.style.setProperty('--atraso-revelar', `${(indice % 4) * 65}ms`);
     }
     observadorDeRevelacao.observe(elemento);
@@ -279,10 +308,12 @@ const carrossel = document.querySelector('.carrossel');
 if (carrossel) {
   const trilho = carrossel.querySelector('.carrossel__trilho');
   const slides = [...carrossel.querySelectorAll('.carrossel__slide')];
-  const pontos = [...carrossel.querySelectorAll('.carrossel__pontos button')];
-  let slideAtual = 0;
-
   const janela = carrossel.querySelector('.carrossel__janela');
+  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const INTERVALO_CARROSSEL = 7000;
+  let slideAtual = 0;
+  let temporizador = null;
+
   const irParaSlide = (indice, revelar = true) => {
     slideAtual = (indice + slides.length) % slides.length;
     trilho.style.transform = `translateX(-${slideAtual * 100}%)`;
@@ -292,59 +323,21 @@ if (carrossel) {
       slide.setAttribute('aria-hidden', String(!ativo));
       if (ativo && revelar) slide.querySelectorAll('.revelar').forEach((el) => el.classList.add('revelar--visivel'));
     });
-    pontos.forEach((ponto, i) => ponto.setAttribute('aria-current', String(i === slideAtual)));
     if (janela) janela.scrollLeft = 0;
     agendarTroca();
   };
 
-  // Troca automática a cada 7 segundos. Para quando a pessoa pausa, passa o mouse,
-  // navega pelo teclado dentro do carrossel, abre uma biografia ou sai da aba.
-  const INTERVALO_CARROSSEL = 7000;
-  const botaoPausa = carrossel.querySelector('.carrossel__pausa');
-  let temporizador = null;
-  let pausadoPelaPessoa = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let mouseSobre = false;
-  let focoDentro = false;
-
-  function trocaPermitida() {
-    return !pausadoPelaPessoa && !mouseSobre && !focoDentro && !document.hidden
-      && !document.querySelector('.bio-modal[open]');
-  }
-
   function agendarTroca() {
     clearTimeout(temporizador);
-    if (trocaPermitida()) temporizador = setTimeout(() => irParaSlide(slideAtual + 1), INTERVALO_CARROSSEL);
+    if (!movimentoReduzido.matches && !document.hidden && !document.querySelector('.bio-modal[open]')) {
+      temporizador = setTimeout(() => irParaSlide(slideAtual + 1), INTERVALO_CARROSSEL);
+    }
   }
 
-  function atualizarBotaoPausa() {
-    if (!botaoPausa) return;
-    botaoPausa.setAttribute('aria-pressed', String(pausadoPelaPessoa));
-    botaoPausa.textContent = pausadoPelaPessoa ? 'Reproduzir' : 'Pausar';
-    botaoPausa.setAttribute('aria-label', pausadoPelaPessoa ? 'Retomar a troca automática dos slides' : 'Pausar a troca automática dos slides');
-  }
-
-  botaoPausa?.addEventListener('click', () => {
-    pausadoPelaPessoa = !pausadoPelaPessoa;
-    atualizarBotaoPausa();
-    agendarTroca();
-  });
-  carrossel.addEventListener('mouseenter', () => { mouseSobre = true; agendarTroca(); });
-  carrossel.addEventListener('mouseleave', () => { mouseSobre = false; agendarTroca(); });
-  carrossel.addEventListener('focusin', (evento) => {
-    focoDentro = evento.target.matches(':focus-visible');
-    agendarTroca();
-  });
-  carrossel.addEventListener('focusout', (evento) => {
-    if (!carrossel.contains(evento.relatedTarget)) { focoDentro = false; agendarTroca(); }
-  });
   document.addEventListener('visibilitychange', agendarTroca);
+  document.addEventListener('bio-modal-aberto', agendarTroca);
   document.addEventListener('bio-modal-fechado', agendarTroca);
-  atualizarBotaoPausa();
-
-  carrossel.querySelectorAll('.carrossel__seta').forEach((seta) => {
-    seta.addEventListener('click', () => irParaSlide(slideAtual + Number(seta.dataset.direcao)));
-  });
-  pontos.forEach((ponto, i) => ponto.addEventListener('click', () => irParaSlide(i)));
+  movimentoReduzido.addEventListener('change', agendarTroca);
 
   carrossel.addEventListener('keydown', (evento) => {
     if (evento.key === 'ArrowRight') irParaSlide(slideAtual + 1);
@@ -360,7 +353,6 @@ if (carrossel) {
     inicioToque = null;
   });
 
-  // Links para #marielle ou #falas-de-maria abrem o slide certo.
   const abrirSlideDoEndereco = () => {
     const indice = slides.findIndex((slide) => `#${slide.id}` === window.location.hash);
     if (indice >= 0) {
@@ -382,7 +374,6 @@ if (carrossel) {
   irParaSlide(0, false);
   abrirSlideDoEndereco();
 }
-
 // Biografias em modal: as imagens do carrossel abrem o texto completo de cada personagem.
 document.querySelectorAll('[data-bio]').forEach((gatilho) => {
   const modal = document.getElementById(gatilho.dataset.bio);
@@ -391,6 +382,7 @@ document.querySelectorAll('[data-bio]').forEach((gatilho) => {
   gatilho.addEventListener('click', () => {
     modal.showModal();
     document.body.classList.add('modal-aberto');
+    document.dispatchEvent(new Event('bio-modal-aberto'));
     modal.querySelector('.bio-modal__corpo')?.scrollTo(0, 0);
     modal.scrollTop = 0;
     modal.querySelector('.bio-modal__fechar')?.focus();
@@ -406,3 +398,126 @@ document.querySelectorAll('[data-bio]').forEach((gatilho) => {
     document.dispatchEvent(new Event('bio-modal-fechado'));
   });
 });
+
+// Carrossel automático de trajetórias indígenas, sem botões ou rolagem manual.
+const carrosselVozes = document.querySelector('[data-vozes-carrossel]');
+if (carrosselVozes) {
+  const cartoesOriginais = [...carrosselVozes.querySelectorAll('.voz-card')];
+  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let indiceVozAtual = 0;
+  let temporizadorVozes;
+  const janelaVozes = carrosselVozes.closest('.vozes__janela');
+  const quantidadeDeClones = Math.min(3, cartoesOriginais.length);
+  cartoesOriginais.slice(0, quantidadeDeClones).forEach((cartao) => {
+    const clone = cartao.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((item) => item.setAttribute('tabindex', '-1'));
+    carrosselVozes.append(clone);
+  });
+
+  function dimensionarCarrosselVozes() {
+    if (!janelaVozes) return;
+    const quantidadeVisivel = window.innerWidth <= 520 ? 1 : window.innerWidth <= 980 ? 2 : 3;
+    const estilo = getComputedStyle(carrosselVozes);
+    const gap = parseFloat(estilo.gap) || 0;
+    const padding = (parseFloat(estilo.paddingLeft) || 0) + (parseFloat(estilo.paddingRight) || 0);
+    const larguraCartao = Math.max(0, (janelaVozes.clientWidth - padding - gap * (quantidadeVisivel - 1)) / quantidadeVisivel);
+    carrosselVozes.style.setProperty('--vozes-card-width', `${larguraCartao}px`);
+  }
+
+  function moverCarrosselVozes(animar = true) {
+    dimensionarCarrosselVozes();
+    const cartoes = carrosselVozes.querySelectorAll('.voz-card');
+    const cartaoAtual = cartoes[indiceVozAtual];
+    if (!cartoes[0] || !cartaoAtual) return;
+    const deslocamento = cartaoAtual.offsetLeft - cartoes[0].offsetLeft;
+    carrosselVozes.style.transition = animar && !movimentoReduzido.matches ? 'transform 700ms ease-in-out' : 'none';
+    carrosselVozes.style.transform = `translate3d(-${deslocamento}px, 0, 0)`;
+  }
+
+  function reiniciarAvancoVozes() {
+    window.clearInterval(temporizadorVozes);
+    if (document.hidden || movimentoReduzido.matches || document.querySelector('.bio-modal[open]')) return;
+    temporizadorVozes = window.setInterval(() => {
+      indiceVozAtual += 1;
+      moverCarrosselVozes();
+    }, 7000);
+  }
+
+  carrosselVozes.addEventListener('transitionend', (evento) => {
+    if (evento.target !== carrosselVozes || indiceVozAtual < cartoesOriginais.length) return;
+    carrosselVozes.style.transition = 'none';
+    indiceVozAtual = 0;
+    moverCarrosselVozes();
+    window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+      carrosselVozes.style.transition = movimentoReduzido.matches ? 'none' : 'transform 700ms ease-in-out';
+    }));
+  });
+
+  document.addEventListener('visibilitychange', reiniciarAvancoVozes);
+  document.addEventListener('bio-modal-aberto', reiniciarAvancoVozes);
+  document.addEventListener('bio-modal-fechado', reiniciarAvancoVozes);
+  movimentoReduzido.addEventListener('change', reiniciarAvancoVozes);
+  window.addEventListener('resize', () => moverCarrosselVozes(false), { passive: true });
+  moverCarrosselVozes(false);
+  reiniciarAvancoVozes();
+}
+
+// Carrossel automático dos cartões de povos indígenas, sem setas nem barra de rolagem.
+const carrosselHistorias = document.querySelector('[data-historias-carrossel]');
+if (carrosselHistorias) {
+  const historiasOriginais = [...carrosselHistorias.querySelectorAll('.historia-card')];
+  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let indiceHistoriaAtual = 0;
+  let temporizadorHistorias;
+  const janelaHistorias = document.querySelector('[data-historias-janela]');
+
+  historiasOriginais.slice(0, 4).forEach((cartao) => {
+    const clone = cartao.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((item) => item.setAttribute('tabindex', '-1'));
+    carrosselHistorias.append(clone);
+  });
+
+  function dimensionarCarrosselHistorias() {
+    if (!janelaHistorias) return;
+    const largura = janelaHistorias.clientWidth;
+    const larguraDaJanela = window.innerWidth;
+    const quantidadeVisivel = larguraDaJanela <= 520 ? 1 : larguraDaJanela <= 980 ? 2 : 4;
+    const gap = parseFloat(getComputedStyle(carrosselHistorias).gap) || 0;
+    const larguraCartao = Math.max(0, (largura - gap * (quantidadeVisivel - 1)) / quantidadeVisivel);
+    carrosselHistorias.style.setProperty('--historias-card-width', `${larguraCartao}px`);
+  }
+
+  function moverCarrosselHistorias(animar = true) {
+    dimensionarCarrosselHistorias();
+    const cartoes = carrosselHistorias.querySelectorAll('.historia-card');
+    const cartaoAtual = cartoes[indiceHistoriaAtual];
+    if (!cartoes[0] || !cartaoAtual) return;
+    const deslocamento = cartaoAtual.offsetLeft - cartoes[0].offsetLeft;
+    carrosselHistorias.classList.toggle('is-animando', animar && !movimentoReduzido.matches);
+    carrosselHistorias.style.transform = `translate3d(-${deslocamento}px, 0, 0)`;
+  }
+
+  carrosselHistorias.addEventListener('transitionend', (evento) => {
+    if (evento.target !== carrosselHistorias || indiceHistoriaAtual < historiasOriginais.length) return;
+    carrosselHistorias.classList.remove('is-animando');
+    indiceHistoriaAtual = 0;
+    moverCarrosselHistorias(false);
+  });
+
+  function agendarHistorias() {
+    window.clearInterval(temporizadorHistorias);
+    if (document.hidden || movimentoReduzido.matches) return;
+    temporizadorHistorias = window.setInterval(() => {
+      indiceHistoriaAtual += 1;
+      moverCarrosselHistorias();
+    }, 6000);
+  }
+
+  document.addEventListener('visibilitychange', agendarHistorias);
+  movimentoReduzido.addEventListener('change', agendarHistorias);
+  window.addEventListener('resize', () => moverCarrosselHistorias(false), { passive:true });
+  moverCarrosselHistorias(false);
+  agendarHistorias();
+}

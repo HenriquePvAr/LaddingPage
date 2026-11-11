@@ -1,0 +1,34 @@
+ASSETS — HISTÓRIAS DOS POVOS INDÍGENAS
+
+Imagens geradas/recortadas para recriar a seção do mockup aprovado.
+Não contêm textos de cards, título nem botões. São ilustrações conceituais, não registros etnográficos de povos específicos.
+
+00_fundo_floresta_escura_1920x1080.webp/.png — base de fundo para a seção
+01_arara_amarela_azul.png — arara/galho recortada, transparente
+02_folhas_superiores.png — folhagens de topo, transparentes
+03_retrato_indigena_ilustrativo.png — retrato decorativo, sem atribuição a um povo específico, transparente
+04_grafismo_vertical_direita.png — desenho geométrico lateral, transparente
+05_folhagem_inferior_esquerda.png — folhas no canto esquerdo, transparentes
+06_folhagem_inferior_direita.png — folhas no canto direito, transparentes
+07_bosque_amazonico_transparente.png — mata ilustrada para sobrepor ao fundo
+08_linhas_ondas_ornamentais.png — linhas orgânicas transparentes
+09_faixa_grafismos_inferior.png — faixa inferior decorativa, transparente
+10_pincelada_laranja.png — pincelada laranja transparente
+card_*.png — quatro imagens ilustrativas de guaraná, máscara, cestaria e retrato (para cards)
+
+SUGESTÃO DE MONTAGEM:
+<section class="historias">
+  <img class="arara" src="01_arara_amarela_azul.png" alt="" />
+  <img class="folhas-topo" src="02_folhas_superiores.png" alt="" />
+  <img class="retrato-decorativo" src="03_retrato_indigena_ilustrativo.png" alt="" />
+  ... aqui entra todo o HTML semântico de título e cards ...
+</section>
+
+.historias { background: #091a08 url('00_fundo_floresta_escura_1920x1080.webp') center/cover no-repeat; position:relative; overflow:hidden; }
+.historias .arara { position:absolute; left:0; top:0; width:180px; pointer-events:none; }
+.historias .folhas-topo { position:absolute; top:0; left:20%; width:45%; pointer-events:none; }
+.historias .retrato-decorativo { position:absolute; right:6%; top:0; width:28%; opacity:.30; filter:sepia(.3) saturate(.7); pointer-events:none; }
+.historias > .conteudo { position:relative; z-index:2; }
+
+NOTA: imagens recortadas de uma prancha gerada por IA têm possíveis bordas discretamente suavizadas;
+para fotos documentais, busque fontes autorizadas e verifique os direitos de uso.
