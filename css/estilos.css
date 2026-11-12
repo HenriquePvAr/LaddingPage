@@ -178,6 +178,8 @@ h1, h2, h3 { margin-top: 0; font-family: 'Fraunces', Georgia, serif; letter-spac
 .bio-modal .sobretitulo { margin-bottom: -4px; font-size: 12px; letter-spacing: .32em; }
 .bio-modal h2 { margin: 0 0 12px; font-size: 52px; line-height: 1; }
 .bio-modal h3 { margin: 22px 0 8px; color: var(--terracota); font-size: 20px; }
+.bio-modal__fontes { margin-top: 22px; padding-top: 12px; border-top: 1px solid #e3cfb1; color: #6b5243; font-size: 12px; line-height: 1.5; }
+.bio-modal__fontes a { color: var(--terracota); }
 .bio-modal p:not(.sobretitulo), .bio-modal li { color: var(--texto-suave); font-size: 14px; line-height: 1.6; }
 .bio-modal ul { margin: 0; padding-left: 18px; }
 .bio-modal li + li { margin-top: 8px; }

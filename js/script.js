@@ -233,11 +233,11 @@ function acrescentarMensagem(texto, autor, html) {
 const TEMAS_CHAT = [
   {
     chaves: ['helena', 'walcott', 'irma', 'sem teto', 'semteto', 'ocupacao', 'ocupacoes', 'ocupar', 'novo israel', 'terra nova', 'zumbi', 'palmares', 'moradia'],
-    resposta: { html: 'Irmã Helena Augusta Walcott, a “mãe dos sem-teto”, liderou ocupações populares em Manaus nas décadas de 1970 e 1980 e foi fundamental na criação de bairros como Novo Israel, Terra Nova e Zumbi dos Palmares. <a href="negras.html#irma-helena">Conheça a história de Irmã Helena</a>.' },
+    resposta: { html: 'Irmã Helena Augusta Walcott, a “mãe dos sem-teto”, liderou ocupações populares em Manaus nas décadas de 1970 e 1980 e foi fundamental na criação de mais de 15 bairros, como Novo Israel, Terra Nova e Zumbi dos Palmares. <a href="negras.html#irma-helena">Conheça a história de Irmã Helena</a>.' },
   },
   {
     chaves: ['felipa', 'aranha', 'quilombo', 'quilombola', '=mola', 'cameta'],
-    resposta: { html: 'Felipa Maria Aranha foi uma mulher negra escravizada que, no século XVIII, fugiu do cativeiro e liderou o Quilombo do Mola, em Cametá (PA). O quilombo reuniu centenas de pessoas e se aliou a outros na resistência às tropas coloniais. <a href="negras.html#felipa">Conheça a história de Felipa</a>.' },
+    resposta: { html: 'Felipa Maria Aranha foi uma mulher negra escravizada que, no século XVIII, fugiu do cativeiro e liderou o Quilombo do Mola, em Cametá (PA). Com cerca de 300 pessoas, o quilombo se uniu a outros quatro na Confederação do Itapocu e resistiu às tropas coloniais. <a href="negras.html#felipa">Conheça a história de Felipa</a>.' },
   },
   {
     chaves: ['marielle', '=franco', 'vereadora'],
