@@ -24,3 +24,13 @@ docs/evidencias/                   Capturas integrais da página final
 ```
 
 Consulte o [guia do projeto](docs/GUIA-DO-PROJETO.md) antes de alterar conteúdo, assets ou pontos de quebra.
+
+## Reorganização local — Projeto Mira
+
+- `index.html`: entrada do projeto, escolha das culturas e programação completa.
+- `negras.html`: conteúdo da antiga inicial, com biografias e experiências preservadas.
+- `indigenas.html`: histórias e vozes indígenas preservadas.
+- `css/inicio.css`: composição exclusiva da nova entrada.
+- `docs/originais/index-original.html`: cópia integral anterior à reorganização; arquivo de preservação, não integra a navegação.
+
+A logo oficial Mira aguarda fornecimento. O título textual não representa uma logo. Datas e endereços do encontro ficam somente na inicial; páginas internas e chatbot encaminham para `index.html#datas`.

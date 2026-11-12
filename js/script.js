@@ -230,10 +230,10 @@ function acrescentarMensagem(texto, autor, html) {
 function respostaDoChat(pergunta) {
   const texto = pergunta.toLocaleLowerCase('pt-BR');
   if (/data|quando|hor[aá]rio|onde|local|adrian|vianorte|centro/.test(texto)) {
-    return 'Os encontros são em Manaus, das 18h30 às 21h30: 18 de novembro em Adrianópolis, 19 no Centro e 24 na ViaNorte. Os endereços completos ainda serão confirmados pela instituição.';
+    return { html: 'As datas, os horários e os endereços dos encontros estão na página inicial. <a href="index.html#datas">Consultar a programação completa</a>.' };
   }
   if (/marielle/.test(texto)) {
-    return 'Marielle Franco (1979–2018) foi socióloga, feminista e vereadora do Rio de Janeiro. Negra e criada na Maré, é referência das lutas de mulheres negras, da população LGBTQIA+ e das favelas. Há um texto sobre ela nesta página.';
+    return 'Marielle Franco (1979–2018) foi socióloga, feminista e vereadora do Rio de Janeiro. Negra e criada na Maré, é referência das lutas de mulheres negras, da população LGBTQIA+ e das favelas. Conheça sua história em negras.html#marielle.';
   }
   if (/muncab|afro-?brasileir|salvador|bahia/.test(texto)) {
     return 'O Museu Nacional da Cultura Afro-Brasileira (MUNCAB) fica no Centro Histórico de Salvador (BA). A entrada é gratuita às quartas-feiras e aos domingos, com reserva online. Mais informações em muncab.com.br.';
@@ -245,7 +245,7 @@ function respostaDoChat(pergunta) {
     return { html: 'O WhatsApp da ESBAM é o (92) 99267-3858. <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer">Abrir conversa</a>.' };
   }
   if (/evento|projeto|maria|o que|sobre/.test(texto)) {
-    return 'Cultura Afro e Indígena — Lutas e Conquistas é um encontro da UNIESBAM em novembro de 2026. “Falas de Maria” valoriza histórias e protagonismos de mulheres negras e indígenas, com abertura cultural, círculo de conversas, sabores da ancestralidade e encerramento cultural.';
+    return 'Cultura Afro e Indígena — Lutas e Conquistas é um encontro da UNIESBAM. “Falas de Maria” valoriza histórias e protagonismos de mulheres negras e indígenas, com abertura cultural, círculo de conversas, sabores da ancestralidade e encerramento cultural.';
   }
   return 'Posso contar as datas do encontro, explicar o evento, falar de Marielle Franco, da programação gratuita do Museu das Culturas Indígenas ou abrir o WhatsApp da ESBAM.';
 }
@@ -308,7 +308,7 @@ if (atalhoChat && painelChat && formularioChat) {
   });
 }
 
-// Carrossel de "Falas de Maria" e Marielle Franco: troca automática, setas, pontos, teclado e gesto de arrastar.
+// Carrossel de Falas de Maria e Marielle Franco: avan?o autom?tico sem controles vis?veis.
 const carrossel = document.querySelector('.carrossel');
 if (carrossel) {
   const trilho = carrossel.querySelector('.carrossel__trilho');
@@ -318,6 +318,7 @@ if (carrossel) {
   const INTERVALO_CARROSSEL = 7000;
   let slideAtual = 0;
   let temporizador = null;
+  let focoNoCarrossel = false;
 
   const irParaSlide = (indice, revelar = true) => {
     slideAtual = (indice + slides.length) % slides.length;
@@ -334,11 +335,16 @@ if (carrossel) {
 
   function agendarTroca() {
     clearTimeout(temporizador);
-    if (!movimentoReduzido.matches && !document.hidden && !document.querySelector('.bio-modal[open]')) {
+    if (!focoNoCarrossel && !movimentoReduzido.matches && !document.hidden && !document.querySelector('.bio-modal[open]')) {
       temporizador = setTimeout(() => irParaSlide(slideAtual + 1), INTERVALO_CARROSSEL);
     }
   }
 
+  carrossel.addEventListener('focusin', () => { focoNoCarrossel = true; agendarTroca(); });
+  carrossel.addEventListener('focusout', (evento) => {
+    focoNoCarrossel = carrossel.contains(evento.relatedTarget);
+    agendarTroca();
+  });
   document.addEventListener('visibilitychange', agendarTroca);
   document.addEventListener('bio-modal-aberto', agendarTroca);
   document.addEventListener('bio-modal-fechado', agendarTroca);
@@ -348,7 +354,6 @@ if (carrossel) {
     if (evento.key === 'ArrowRight') irParaSlide(slideAtual + 1);
     if (evento.key === 'ArrowLeft') irParaSlide(slideAtual - 1);
   });
-
   let inicioToque = null;
   trilho.addEventListener('touchstart', (evento) => { inicioToque = evento.touches[0].clientX; }, { passive: true });
   trilho.addEventListener('touchend', (evento) => {
@@ -404,125 +409,51 @@ document.querySelectorAll('[data-bio]').forEach((gatilho) => {
   });
 });
 
-// Carrossel automático de trajetórias indígenas, sem botões ou rolagem manual.
-const carrosselVozes = document.querySelector('[data-vozes-carrossel]');
-if (carrosselVozes) {
-  const cartoesOriginais = [...carrosselVozes.querySelectorAll('.voz-card')];
-  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let indiceVozAtual = 0;
-  let temporizadorVozes;
-  const janelaVozes = carrosselVozes.closest('.vozes__janela');
-  const quantidadeDeClones = Math.min(3, cartoesOriginais.length);
-  cartoesOriginais.slice(0, quantidadeDeClones).forEach((cartao) => {
-    const clone = cartao.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((item) => item.setAttribute('tabindex', '-1'));
-    carrosselVozes.append(clone);
+// Carrosseis ind?genas: avan?o autom?tico sem barra ou controles vis?veis.
+function prepararCarrosselIndigena(seletor, seletorJanela, seletorCartao, intervalo) {
+  const trilho = document.querySelector(seletor);
+  if (!trilho) return;
+  const janela = trilho.closest(seletorJanela);
+  if (!janela) return;
+  const cartoes = [...trilho.querySelectorAll(seletorCartao)];
+  const movimento = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let temporizador;
+  let emInteracao = false;
+  function mover() {
+    const largura = cartoes[0]?.getBoundingClientRect().width || janela.clientWidth;
+    const passo = largura + (parseFloat(getComputedStyle(trilho).gap) || 0);
+    const fim = janela.scrollWidth - janela.clientWidth;
+    const destino = janela.scrollLeft >= fim - 2 ? 0 : Math.min(fim, janela.scrollLeft + passo);
+    janela.scrollTo({ left: destino, behavior: movimento.matches ? 'auto' : 'smooth' });
+  }
+  function agendar() {
+    clearInterval(temporizador);
+    if (emInteracao || movimento.matches || document.hidden) return;
+    temporizador = setInterval(mover, intervalo);
+  }
+  janela.tabIndex = 0;
+  janela.addEventListener('keydown', (evento) => {
+    if (evento.target !== janela) return;
+    if (evento.key === 'ArrowRight' || evento.key === 'ArrowLeft') {
+      evento.preventDefault();
+      const largura = cartoes[0]?.getBoundingClientRect().width || janela.clientWidth;
+      const passo = largura + (parseFloat(getComputedStyle(trilho).gap) || 0);
+      janela.scrollBy({ left: evento.key === 'ArrowRight' ? passo : -passo, behavior: 'smooth' });
+    }
   });
-
-  function dimensionarCarrosselVozes() {
-    if (!janelaVozes) return;
-    const quantidadeVisivel = window.innerWidth <= 520 ? 1 : window.innerWidth <= 980 ? 2 : 3;
-    const estilo = getComputedStyle(carrosselVozes);
-    const gap = parseFloat(estilo.gap) || 0;
-    const padding = (parseFloat(estilo.paddingLeft) || 0) + (parseFloat(estilo.paddingRight) || 0);
-    const larguraCartao = Math.max(0, (janelaVozes.clientWidth - padding - gap * (quantidadeVisivel - 1)) / quantidadeVisivel);
-    carrosselVozes.style.setProperty('--vozes-card-width', `${larguraCartao}px`);
-  }
-
-  function moverCarrosselVozes(animar = true) {
-    dimensionarCarrosselVozes();
-    const cartoes = carrosselVozes.querySelectorAll('.voz-card');
-    const cartaoAtual = cartoes[indiceVozAtual];
-    if (!cartoes[0] || !cartaoAtual) return;
-    const deslocamento = cartaoAtual.offsetLeft - cartoes[0].offsetLeft;
-    carrosselVozes.style.transition = animar && !movimentoReduzido.matches ? 'transform 700ms ease-in-out' : 'none';
-    carrosselVozes.style.transform = `translate3d(-${deslocamento}px, 0, 0)`;
-  }
-
-  function reiniciarAvancoVozes() {
-    window.clearInterval(temporizadorVozes);
-    if (document.hidden || movimentoReduzido.matches || document.querySelector('.bio-modal[open]')) return;
-    temporizadorVozes = window.setInterval(() => {
-      indiceVozAtual += 1;
-      moverCarrosselVozes();
-    }, 7000);
-  }
-
-  carrosselVozes.addEventListener('transitionend', (evento) => {
-    if (evento.target !== carrosselVozes || indiceVozAtual < cartoesOriginais.length) return;
-    carrosselVozes.style.transition = 'none';
-    indiceVozAtual = 0;
-    moverCarrosselVozes();
-    window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
-      carrosselVozes.style.transition = movimentoReduzido.matches ? 'none' : 'transform 700ms ease-in-out';
-    }));
+  janela.addEventListener('focusin', () => { emInteracao = true; agendar(); });
+  janela.addEventListener('focusout', (evento) => {
+    emInteracao = janela.contains(evento.relatedTarget);
+    agendar();
   });
-
-  document.addEventListener('visibilitychange', reiniciarAvancoVozes);
-  document.addEventListener('bio-modal-aberto', reiniciarAvancoVozes);
-  document.addEventListener('bio-modal-fechado', reiniciarAvancoVozes);
-  movimentoReduzido.addEventListener('change', reiniciarAvancoVozes);
-  window.addEventListener('resize', () => moverCarrosselVozes(false), { passive: true });
-  moverCarrosselVozes(false);
-  reiniciarAvancoVozes();
+  janela.addEventListener('pointerenter', () => { emInteracao = true; agendar(); });
+  janela.addEventListener('pointerleave', () => {
+    emInteracao = janela.contains(document.activeElement);
+    agendar();
+  });
+  document.addEventListener('visibilitychange', agendar);
+  movimento.addEventListener('change', agendar);
+  agendar();
 }
-
-// Carrossel automático dos cartões de povos indígenas, sem setas nem barra de rolagem.
-const carrosselHistorias = document.querySelector('[data-historias-carrossel]');
-if (carrosselHistorias) {
-  const historiasOriginais = [...carrosselHistorias.querySelectorAll('.historia-card')];
-  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let indiceHistoriaAtual = 0;
-  let temporizadorHistorias;
-  const janelaHistorias = document.querySelector('[data-historias-janela]');
-
-  historiasOriginais.slice(0, 4).forEach((cartao) => {
-    const clone = cartao.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((item) => item.setAttribute('tabindex', '-1'));
-    carrosselHistorias.append(clone);
-  });
-
-  function dimensionarCarrosselHistorias() {
-    if (!janelaHistorias) return;
-    const largura = janelaHistorias.clientWidth;
-    const larguraDaJanela = window.innerWidth;
-    const quantidadeVisivel = larguraDaJanela <= 520 ? 1 : larguraDaJanela <= 980 ? 2 : 4;
-    const gap = parseFloat(getComputedStyle(carrosselHistorias).gap) || 0;
-    const larguraCartao = Math.max(0, (largura - gap * (quantidadeVisivel - 1)) / quantidadeVisivel);
-    carrosselHistorias.style.setProperty('--historias-card-width', `${larguraCartao}px`);
-  }
-
-  function moverCarrosselHistorias(animar = true) {
-    dimensionarCarrosselHistorias();
-    const cartoes = carrosselHistorias.querySelectorAll('.historia-card');
-    const cartaoAtual = cartoes[indiceHistoriaAtual];
-    if (!cartoes[0] || !cartaoAtual) return;
-    const deslocamento = cartaoAtual.offsetLeft - cartoes[0].offsetLeft;
-    carrosselHistorias.classList.toggle('is-animando', animar && !movimentoReduzido.matches);
-    carrosselHistorias.style.transform = `translate3d(-${deslocamento}px, 0, 0)`;
-  }
-
-  carrosselHistorias.addEventListener('transitionend', (evento) => {
-    if (evento.target !== carrosselHistorias || indiceHistoriaAtual < historiasOriginais.length) return;
-    carrosselHistorias.classList.remove('is-animando');
-    indiceHistoriaAtual = 0;
-    moverCarrosselHistorias(false);
-  });
-
-  function agendarHistorias() {
-    window.clearInterval(temporizadorHistorias);
-    if (document.hidden || movimentoReduzido.matches) return;
-    temporizadorHistorias = window.setInterval(() => {
-      indiceHistoriaAtual += 1;
-      moverCarrosselHistorias();
-    }, 6000);
-  }
-
-  document.addEventListener('visibilitychange', agendarHistorias);
-  movimentoReduzido.addEventListener('change', agendarHistorias);
-  window.addEventListener('resize', () => moverCarrosselHistorias(false), { passive:true });
-  moverCarrosselHistorias(false);
-  agendarHistorias();
-}
+prepararCarrosselIndigena('[data-vozes-carrossel]', '.vozes__janela', '.voz-card', 7000);
+prepararCarrosselIndigena('[data-historias-carrossel]', '.historias__janela', '.historia-card', 6000);

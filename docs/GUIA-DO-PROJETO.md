@@ -31,3 +31,12 @@
 ## Evidências visuais
 
 As capturas integrais da página estão em [`docs/evidencias/`](evidencias/): `landing-page-desktop-1440px.png` e `landing-page-celular-390px.png`.
+
+## Reorganização Mira
+
+A entrada passa a ser `index.html`. Conteúdos históricos da antiga inicial estão em `negras.html`; `indigenas.html` mantém os conteúdos dos povos indígenas. A agenda completa deve ser mantida exclusivamente no `index.html`, acessível das internas e do chatbot por `index.html#datas`. Referências históricas a datas devem ser preservadas.
+
+`css/inicio.css` isola a composição do portal. O JavaScript compartilhado mantém menu, carrosséis, biografias, chatbot e calendário sem dependências novas. A cópia em `docs/originais/index-original.html` deve permanecer inalterada e fora da navegação. A logo oficial Mira ainda será fornecida; não usar substitutos.
+
+
+Validação da reorganização: backup conferido por SHA256; arquivos, âncoras locais e IDs das três páginas conferidos; agenda exclusiva da inicial; sintaxe JavaScript aprovada por node --check. Navegador indisponível na sessão: a revisão visual das cinco larguras e os testes interativos de chatbot, menu, carrosséis, biografias e calendário continuam pendentes.

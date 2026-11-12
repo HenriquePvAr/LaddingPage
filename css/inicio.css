@@ -1,0 +1,43 @@
+﻿/* Entrada do Projeto Mira: usa a paleta e a tipografia existentes. */
+.pagina-portal .portal { padding-block: clamp(40px,6vw,76px); text-align:center; }
+.pagina-portal .portal__marca { width:100%; max-width:800px; margin:16px auto 12px; line-height:1; }
+.pagina-portal .portal__logo { display:block; width:100%; max-width:100%; height:auto; object-fit:contain; }
+.pagina-portal .portal__subtitulo { margin:0 0 20px; color:#35452c; font:500 clamp(1.1rem,2.2vw,1.5rem)/1.4 'Fraunces',Georgia,serif; }
+@media(max-width:1024px) { .pagina-portal .portal__marca { max-width:680px; } }
+@media(max-width:680px) { .pagina-portal .portal__marca { max-width:480px; margin-block:16px 14px; } }
+.portal__mensagem { max-width:58ch; margin:0 auto 32px; color:var(--texto-suave); font-size:clamp(.9375rem,1.4vw,1.0625rem); line-height:1.7; }
+.portal h2 { max-width:32ch; margin:0 auto 24px; font-size:clamp(1.2rem,2.3vw,1.6rem); line-height:1.3; }
+.culturas { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; text-align:left; }
+.cultura { display:block; min-width:0; overflow:hidden; border:1px solid #d7b994; border-radius:20px; background:var(--creme); text-decoration:none; transition:box-shadow .2s; }
+.cultura:hover { box-shadow:var(--shadow-hover); }
+.cultura:focus-visible { outline:3px solid var(--terracota); outline-offset:5px; }
+.cultura__arte { height:clamp(230px,27vw,330px); background:#e7c998; overflow:hidden; }
+.cultura--indigena .cultura__arte { background:#26301b; }
+.cultura__arte img { width:100%; height:100%; object-fit:contain; }
+.cultura__texto { padding:22px 26px 26px; }
+.cultura__texto h3 { margin:0; font:600 clamp(1.5rem,2.6vw,1.9rem)/1.25 'Fraunces',Georgia,serif; }
+.cultura__texto p { max-width:40ch; margin:10px 0 16px; color:var(--texto-suave); font-size:.9375rem; line-height:1.6; }
+.cultura__texto > span { display:inline-block; max-width:34ch; font-size:.9375rem; line-height:1.5; font-weight:800; color:var(--terracota); text-decoration:underline; text-underline-offset:4px; }
+.pagina-portal .datas { padding-top:40px; }
+@media(max-width:680px) {
+ .culturas { grid-template-columns:1fr; gap:22px; }
+ .cultura__arte { height:260px; }
+ .cultura__texto { padding:20px; }
+ .portal__mensagem { margin-bottom:28px; }
+}
+
+/* Equilíbrio das duas culturas apenas na entrada do projeto. */
+.pagina-portal { background:linear-gradient(110deg,#f5e6cb 0%,#fff8eb 48%,#e6ebdd 100%); }
+.pagina-portal .cabecalho, .pagina-portal .rodape { background:linear-gradient(100deg,#291914,#26301b); }
+.pagina-portal .portal h2 { color:#35452c; }
+.pagina-portal .sobretitulo { color:#654633; }
+.pagina-portal .cultura--negra { border-color:#bf9252; background:#fff8eb; }
+.pagina-portal .cultura--negra .cultura__arte { background:linear-gradient(135deg,#e7c998,#e7a52a); }
+.pagina-portal .cultura--indigena { border-color:#718064; background:#edf1e6; }
+.pagina-portal .cultura--indigena .cultura__arte { background:linear-gradient(135deg,#35452c,#101608); }
+.pagina-portal .cultura--indigena .cultura__texto h3,
+.pagina-portal .cultura--indigena .cultura__texto > span { color:#35452c; }
+.pagina-portal .cultura--indigena:focus-visible { outline-color:#35452c; }
+.pagina-portal .datas { background:#edf1e6; }
+.pagina-portal .datas__titulo { color:#35452c; }
+.pagina-portal .cartao-data { border-top:3px solid #718064; }

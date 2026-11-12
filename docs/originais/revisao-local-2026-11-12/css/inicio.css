@@ -1,0 +1,23 @@
+﻿/* Entrada do Projeto Mira: usa a paleta e a tipografia existentes. */
+.pagina-portal .portal { padding-block: clamp(40px,6vw,76px); text-align:center; }
+.portal h1 { margin:8px 0 18px; font:600 clamp(3rem,7vw,5.5rem)/1.05 'Fraunces',Georgia,serif; letter-spacing:-.045em; }
+.portal__mensagem { max-width:650px; margin:0 auto 36px; color:var(--texto-suave); font-size:clamp(1rem,2vw,1.15rem); }
+.portal h2 { font-size:clamp(1.25rem,2.8vw,1.8rem); margin:0 0 24px; }
+.culturas { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; text-align:left; }
+.cultura { display:block; min-width:0; overflow:hidden; border:1px solid #d7b994; border-radius:20px; background:var(--creme); text-decoration:none; transition:box-shadow .2s; }
+.cultura:hover { box-shadow:var(--shadow-hover); }
+.cultura:focus-visible { outline:3px solid var(--terracota); outline-offset:5px; }
+.cultura__arte { height:clamp(230px,27vw,330px); background:#e7c998; overflow:hidden; }
+.cultura--indigena .cultura__arte { background:#26301b; }
+.cultura__arte img { width:100%; height:100%; object-fit:contain; }
+.cultura__texto { padding:22px 26px 26px; }
+.cultura__texto h3 { margin:0; font:600 clamp(1.6rem,3vw,2.15rem)/1.2 'Fraunces',Georgia,serif; }
+.cultura__texto p { margin:10px 0 18px; color:var(--texto-suave); }
+.cultura__texto > span { font-weight:800; color:var(--terracota); text-decoration:underline; text-underline-offset:4px; }
+.pagina-portal .datas { padding-top:40px; }
+@media(max-width:680px) {
+ .culturas { grid-template-columns:1fr; gap:22px; }
+ .cultura__arte { height:260px; }
+ .cultura__texto { padding:20px; }
+ .portal__mensagem { margin-bottom:28px; }
+}

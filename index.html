@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5e6cb">
   <meta name="description"
-    content="Cultura Afro e Indígena — Lutas e Conquistas. Encontros da UNIESBAM em novembro de 2026.">
-  <title>Cultura Afro e Indígena — Lutas e Conquistas | UNIESBAM</title>
+    content="Projeto Mira: vozes de mulheres negras e indígenas brasileiras. Conheça as culturas e a programação da UNIESBAM.">
+  <title>Projeto Mira | Mulheres negras e indígenas brasileiras</title>
   <link rel="icon" href="assets/favicon.png" type="image/png" sizes="64x64">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,13 +18,14 @@
   <link rel="stylesheet" href="assets/tokens.css">
   <link rel="stylesheet" href="css/estilos.css">
   <script src="js/script.js" defer></script>
+  <link rel="stylesheet" href="css/inicio.css">
 </head>
 
-<body class="pagina-inicial">
-  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+<body class="pagina-portal">
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
   <header class="cabecalho" id="inicio">
     <div class="container cabecalho__interno">
-      <a class="marca" href="#inicio" aria-label="UNIESBAM — início">
+      <a class="marca" href="index.html" aria-label="UNIESBAM — início">
         <img class="marca__imagem" src="assets/logo-uniesbam-oficial-branca.png"
           alt="UNIESBAM — Centro Universitário ESBAM" width="703" height="106">
       </a>
@@ -32,86 +33,26 @@
         aria-label="Abrir menu">
         <span></span><span></span><span></span>
       </button>
-      <nav class="navegacao" id="navegacao-principal" aria-label="Navegação principal">
-        <a href="#experiencias">Experiências</a><a href="indigenas.html">Ind&iacute;gena</a><a href="#datas">Datas e locais</a><a
-          href="#contato">Contato</a><a class="navegacao__cta" href="#datas">Ver datas e locais</a>
-      </nav>
+      <nav class="navegacao" id="navegacao-principal" aria-label="Navegação principal"><a href="index.html">Início</a><a href="negras.html">Cultura negra</a><a href="indigenas.html">Culturas indígenas</a><a class="navegacao__cta" href="index.html#datas">Programação</a></nav>
     </div>
-  </header>
-
-  <main id="conteudo">
-    <section class="hero textura" aria-labelledby="titulo-principal">
-      <div class="container hero__grade">
-        <div class="hero__texto">
-          <p class="hero__tema">Encontro cultural · Novembro de 2026</p>
-          <h1 id="titulo-principal">Cultura<br><span>Afro <i>&amp;</i></span><br>Indígena</h1>
-          <p class="hero__subtitulo">Lutas e Conquistas</p>
-          <p class="hero__descricao">Vozes de mulheres negras e indígenas. Memórias de resistência e conquistas que
-            seguem transformando o presente.</p>
-          <div class="hero__acoes">
-            <a class="botao botao--principal" href="#datas">Ver datas e locais</a>
-            <a class="botao botao--secundario" href="#projeto">Conhecer o projeto</a>
-          </div>
-          <p class="hero__agenda">18 <span>•</span> 19 <span>•</span> 24 NOV <i>—</i> MANAUS/AM</p>
-        </div>
-        <div class="hero__arte">
-          <span class="hero__sol" aria-hidden="true"></span>
-          <img src="assets/optimized/hero-dupla.webp"
-            alt="Ilustração editorial de duas mulheres, uma negra e uma indígena, em perfil e olhando para o horizonte."
-            width="1536" height="1024">
-        </div>
-      </div>
-    </section>
-
-    <section class="manifesto" aria-label="Manifesto">
-      <div class="container manifesto__interno"><span class="manifesto__marca" aria-hidden="true">◇</span>
-        <p>Memória é resistência. Cultura é futuro.</p><span class="manifesto__marca" aria-hidden="true">◇</span>
-      </div>
-    </section>
-
-    <section class="secao projeto textura" id="projeto" aria-labelledby="titulo-projeto">
-      <div class="container carrossel" role="region" aria-roledescription="carrossel"
-        aria-label="Falas de Maria e Marielle Franco">
-        <div class="carrossel__janela" aria-live="off">
-          <div class="carrossel__trilho">
-            <article class="carrossel__slide projeto__grade" id="falas-de-maria" role="group"
-              aria-roledescription="slide" aria-label="1 de 2: Falas de Maria">
-              <button class="projeto__imagem" type="button" data-bio="bio-maria" aria-haspopup="dialog" aria-label="Abrir a biografia de Maria"><img src="assets/optimized/maria-colagem.webp"
-                  alt="Colagem editorial de Maria com retrato em sépia, círculo dourado, folhas terracota e grafismo geométrico."
-                  width="1448" height="1086" loading="lazy"><span class="projeto__selo" aria-hidden="true">Ler biografia +</span></button>
-              <div class="projeto__texto">
-                <p class="sobretitulo">Falas de</p>
-                <h2 id="titulo-projeto">Maria</h2>
-                <img class="divisor" src="assets/divisor-cultural.svg" alt="" aria-hidden="true">
-                <p>“Falas de Maria” convida à escuta e à valorização das histórias e dos protagonismos de mulheres
-                  negras e indígenas.</p>
-                <p>Um espaço de encontro para refletir sobre memória, lutas, conquistas, cultura, educação e
-                  ancestralidade — reconhecendo saberes que constroem o presente e abrem caminhos para o futuro.</p>
-                <a class="link-seta" href="#experiencias">Explore as experiências</a>
-              </div>
-            </article>
-            <article class="carrossel__slide projeto__grade" id="marielle" role="group" aria-roledescription="slide"
-              aria-label="2 de 2: Marielle Franco">
-              <button class="projeto__imagem" type="button" data-bio="bio-marielle" aria-haspopup="dialog" aria-label="Abrir a biografia de Marielle Franco"><img src="assets/optimized/marielle-franco.webp"
-                  alt="Ilustração em colagem de Marielle Franco diante de uma lua cheia, com turbante, colares, folhas e a paisagem do Rio de Janeiro."
-                  width="1058" height="1100" loading="lazy"><span class="projeto__selo" aria-hidden="true">Ler biografia +</span></button>
-              <div class="projeto__texto">
-                <p class="sobretitulo">Presente,</p>
-                <h2 id="titulo-marielle">Marielle</h2>
-                <img class="divisor" src="assets/divisor-cultural.svg" alt="" aria-hidden="true">
-                <p>Marielle Franco (1979–2018) foi socióloga, feminista e vereadora do Rio de Janeiro. Negra e criada na
-                  Maré, levou à política a defesa de mulheres negras, da população LGBTQIA+ e de quem vive nas favelas.
-                </p>
-                <p>Denunciou a violência do Estado e insistiu no direito à cidade, à memória e à vida digna. Assassinada
-                  em 14 de março de 2018, segue como referência das lutas e conquistas que este encontro celebra.</p>
-                <a class="link-seta" href="#datas">Ver datas e locais</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  </header><main id="conteudo">
+<section class="portal container" aria-labelledby="titulo-principal">
+  <p class="sobretitulo">Memória, identidade e ancestralidade</p>
+  <h1 class="portal__marca" id="titulo-principal"><img class="portal__logo" src="assets/optimized/miralogo.webp" alt="Mira" width="2172" height="724" fetchpriority="high"></h1>
+  <p class="portal__subtitulo">Mulheres que Inspiram</p>
+  <p class="portal__mensagem">Valorizar as mulheres negras e indígenas brasileiras é reconhecer as vozes, os saberes e as lutas que constroem nossa história.</p>
+  <h2 id="titulo-escolha">Qual cultura você quer conhecer?</h2>
+  <div class="culturas" aria-labelledby="titulo-escolha">
+    <a class="cultura cultura--negra" href="negras.html">
+      <div class="cultura__arte"><img src="assets/optimized/maria-colagem.webp" alt="Colagem artística de Maria, representando o protagonismo das mulheres negras." width="1448" height="1086"></div>
+      <div class="cultura__texto"><h3>Mulheres negras</h3><p>Memórias de resistência e conquistas.</p><span>Conhecer a cultura negra </span></div>
+    </a>
+    <a class="cultura cultura--indigena" href="indigenas.html">
+      <div class="cultura__arte"><img src="assets/optimized/02_personagem_indigena_espelhada_transparente.webp" alt="Ilustração de uma mulher indígena com adornos e pintura facial." width="1536" height="1024"></div>
+      <div class="cultura__texto"><h3>Mulheres indígenas</h3><p>Saberes ancestrais e culturas vivas.</p><span>Conhecer as culturas indígenas </span></div>
+    </a>
+  </div>
+</section>
     <section class="secao datas" id="datas" aria-labelledby="titulo-datas">
       <div class="container">
         <h2 class="datas__titulo" id="titulo-datas">Visite a exposição</h2>
@@ -153,89 +94,19 @@
         <p class="datas__nota">Endereços conforme <a href="https://esbam.edu.br/direito/" target="_blank" rel="noopener noreferrer">site oficial da UNIESBAM</a>.</p>
       </div>
     </section>
-
-    <section class="experiencias" id="experiencias" aria-labelledby="titulo-experiencias">
-      <div class="container">
-        <h2 class="experiencias__titulo" id="titulo-experiencias">Experiências do evento</h2>
-        <div class="experiencias__grade">
-          <article class="cartao-experiencia"><img src="assets/icone-tambor.svg" alt="" aria-hidden="true">
-            <div><small>01</small>
-              <h3>Abertura cultural</h3>
-            </div>
-          </article>
-          <article class="cartao-experiencia"><img src="assets/icone-conversas.svg" alt="" aria-hidden="true">
-            <div><small>02</small>
-              <h3>Círculo de conversas</h3>
-            </div>
-          </article>
-          <article class="cartao-experiencia"><img src="assets/icone-sabores.svg" alt="" aria-hidden="true">
-            <div><small>03</small>
-              <h3>Sabores da ancestralidade</h3>
-            </div>
-          </article>
-          <article class="cartao-experiencia"><img src="assets/icone-livro.svg" alt="" aria-hidden="true">
-            <div><small>04</small>
-              <h3>Encerramento cultural</h3>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="chamado-museu" aria-label="Museus para visitar">
-      <div class="container chamado-museu__grade">
-        <article class="chamado-museu__cartao">
-          <figure class="chamado-museu__figura">
-            <img class="chamado-museu__imagem" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Inaugura%C3%A7%C3%A3o_do_Museu_das_Culturas_Ind%C3%ADgenas_%2852183066389%29.jpg/1280px-Inaugura%C3%A7%C3%A3o_do_Museu_das_Culturas_Ind%C3%ADgenas_%2852183066389%29.jpg" alt="Interior do Museu das Culturas Indígenas durante a inauguração." loading="lazy">
-            <figcaption>Foto: Governo do Estado de São Paulo · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Inaugura%C3%A7%C3%A3o_do_Museu_das_Culturas_Ind%C3%ADgenas_(52183066389).jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></figcaption>
-          </figure>
-          <div class="chamado-museu__corpo">
-            <p class="sobretitulo">Programação gratuita</p>
-            <h2>Museu das Culturas Indígenas</h2>
-            <p>Em São Paulo, o museu abre exposições e uma agenda cultural para o público. Às quintas-feiras, a entrada é gratuita para todas as pessoas; indígenas entram sem custo todos os dias. No site estão a Feira de Artes Manuais Indígenas, o cineclube, as ações para famílias e o restante da programação.</p>
-            <a class="chamado-museu__acao" href="https://museudasculturasindigenas.org.br/" target="_blank" rel="noopener noreferrer">Ver a programação no site</a>
-          </div>
-        </article>
-        <article class="chamado-museu__cartao">
-          <figure class="chamado-museu__figura">
-            <img class="chamado-museu__imagem" src="https://upload.wikimedia.org/wikipedia/commons/8/87/Muncab.JPG" alt="Fachada do Museu Nacional da Cultura Afro-Brasileira, em Salvador." loading="lazy">
-            <figcaption>Foto: Pá Freitas · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Muncab.JPG" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></figcaption>
-          </figure>
-          <div class="chamado-museu__corpo">
-            <p class="sobretitulo">Entrada gratuita às quartas e domingos</p>
-            <h2>Museu Nacional da Cultura Afro-Brasileira</h2>
-            <p>O MUNCAB fica no Centro Histórico de Salvador (BA), perto do Elevador Lacerda. Às quartas-feiras e aos domingos a entrada é gratuita, com reserva online. Em cartaz está “OMI TUTU – Água Fresca”, de Hariel Revignet, e de 10 a 13 de dezembro o museu recebe o Festival Paisagem Sonora.</p>
-            <a class="chamado-museu__acao" href="https://www.muncab.com.br/" target="_blank" rel="noopener noreferrer">Conhecer o MUNCAB</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="convite" aria-labelledby="titulo-convite">
-      <div class="container convite__interno">
-        <div class="convite__arte" aria-hidden="true"><img src="assets/optimized/cta-dupla.webp" alt="" loading="lazy"></div>
-        <div class="convite__texto">
-          <p class="sobretitulo">Faça parte desse encontro</p>
-          <h2 id="titulo-convite">Sua presença também faz parte dessa história.</h2>
-          <p>Participe de encontros que celebram a memória, a identidade e as conquistas dos povos afro-brasileiros e
-            indígenas.</p><a class="botao botao--principal" href="#datas">Ver datas e locais</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
+</main>
   <footer class="rodape" id="contato">
     <div class="container rodape__grade">
       <div class="rodape__institucional">
-        <a class="marca marca--rodape" href="#inicio" aria-label="UNIESBAM — início"><img class="marca__imagem"
+        <a class="marca marca--rodape" href="index.html" aria-label="UNIESBAM — início"><img class="marca__imagem"
             src="assets/logo-uniesbam-oficial-branca.png" alt="UNIESBAM — Centro Universitário ESBAM" width="703"
             height="106"></a>
         <p>Centro Universitário ESBAM<br>Manaus, Amazonas</p>
       </div>
       <nav class="rodape__navegacao" aria-label="Navegação do rodapé">
         <h2>Navegue</h2>
-        <a href="#falas-de-maria">Falas de Maria</a><a href="#marielle">Marielle
-          Franco</a><a href="#experiencias">Experiências</a><a href="#datas">Datas e locais</a>
+        <a href="negras.html#falas-de-maria">Falas de Maria</a><a href="negras.html#marielle">Marielle
+          Franco</a><a href="negras.html#experiencias">Experiências</a><a href="index.html#datas">Datas e locais</a>
       </nav>
       <div class="rodape__canais">
         <h2>Canais oficiais</h2>
@@ -264,9 +135,7 @@
       </div>
     </div>
     <div class="container rodape__base"><span>© 2026 UNIESBAM · Cultura Afro e Indígena</span></div>
-  </footer>
-
-  <button class="atalho-chat" type="button" aria-expanded="false" aria-controls="painel-chat"
+  </footer>  <button class="atalho-chat" type="button" aria-expanded="false" aria-controls="painel-chat"
     aria-label="Abrir o chatbot">
     <img class="atalho-chat__icone" src="assets/optimized/chatbot.webp" alt="" width="256" height="256">
     <img class="atalho-chat__rotulo" src="assets/optimized/chatbot-rotulo.webp" alt="" width="480" height="129">
@@ -294,48 +163,5 @@
       <button type="submit">Enviar</button>
     </form>
   </div>
-  <dialog class="bio-modal" id="bio-maria" aria-labelledby="bio-maria-titulo">
-    <div class="bio-modal__corpo">
-      <button class="bio-modal__fechar" type="button" aria-label="Fechar a biografia">×</button>
-      <img class="bio-modal__imagem" src="assets/optimized/maria-colagem.webp" alt="" width="1448" height="1086">
-      <p class="sobretitulo">Falas de</p>
-      <h2 id="bio-maria-titulo">Maria</h2>
-      <img class="divisor" src="assets/divisor-cultural.svg" alt="" aria-hidden="true">
-      <p>Maria é a figura que dá nome ao projeto. Não representa uma única pessoa: é a avó, a mãe, a benzedeira, a professora, a trabalhadora e a liderança comunitária, mulheres negras e indígenas que sustentaram famílias e territórios e quase nunca entraram nos livros de história.</p>
-      <h3>Por que ouvir as Marias</h3>
-      <p>Grande parte da memória afro-brasileira e indígena foi guardada pela oralidade: histórias, receitas, cantos, rezas e saberes sobre a terra passados de geração em geração. Escutar essas mulheres é reconhecer que elas também produzem conhecimento e fazem história.</p>
-      <h3>Marias na história do Brasil</h3>
-      <ul>
-        <li><strong>Maria Felipa de Oliveira</strong>, marisqueira negra da Ilha de Itaparica (BA), liderou mulheres e homens contra as tropas portuguesas nas lutas pela Independência da Bahia, em 1822 e 1823.</li>
-        <li><strong>Maria Firmina dos Reis</strong> (1822–1917), professora maranhense, publicou <em>Úrsula</em> em 1859, considerado o primeiro romance escrito por uma mulher negra no Brasil e uma das primeiras obras abolicionistas do país.</li>
-        <li><strong>Carolina Maria de Jesus</strong> (1914–1977) registrou em cadernos a vida na favela do Canindé, em São Paulo. O livro <em>Quarto de Despejo</em> (1960) foi traduzido para mais de uma dezena de idiomas.</li>
-      </ul>
-      <p>“Falas de Maria” abre espaço para que essas vozes, as famosas e as anônimas, sejam ouvidas no presente.</p>
-    </div>
-  </dialog>
-
-  <dialog class="bio-modal" id="bio-marielle" aria-labelledby="bio-marielle-titulo">
-    <div class="bio-modal__corpo">
-      <button class="bio-modal__fechar" type="button" aria-label="Fechar a biografia">×</button>
-      <img class="bio-modal__imagem" src="assets/optimized/marielle-franco.webp" alt="" width="1058" height="1100">
-      <p class="sobretitulo">Presente,</p>
-      <h2 id="bio-marielle-titulo">Marielle Franco</h2>
-      <img class="divisor" src="assets/divisor-cultural.svg" alt="" aria-hidden="true">
-      <p>Marielle Francisco da Silva nasceu em 27 de julho de 1979 e cresceu no Complexo da Maré, na Zona Norte do Rio de Janeiro. Mulher negra, mãe e lésbica, transformou a experiência da favela em pauta política.</p>
-      <h3>Trajetória</h3>
-      <ul>
-        <li>Estudou em pré-vestibular comunitário e se formou em Ciências Sociais pela PUC-Rio, com bolsa. Fez mestrado em Administração Pública na UFF, com uma dissertação sobre as Unidades de Polícia Pacificadora (UPPs).</li>
-        <li>Trabalhou por cerca de dez anos na Comissão de Defesa dos Direitos Humanos da Assembleia Legislativa do Rio (Alerj), acolhendo vítimas de violência e seus familiares.</li>
-        <li>Em 2016 foi eleita vereadora pelo PSOL com mais de 46 mil votos, a quinta maior votação da cidade. Presidiu a Comissão de Defesa da Mulher da Câmara Municipal.</li>
-        <li>Em 2018 passou a relatar a comissão da Câmara que acompanhava a intervenção federal na segurança pública do Rio.</li>
-      </ul>
-      <h3>Por que ela importa</h3>
-      <p>Marielle levou para a política as vozes que costumam ficar de fora: mulheres negras, população LGBTQIA+, moradores de favela e vítimas da violência do Estado. Defendeu o direito à cidade, à saúde da mulher, à creche noturna e à memória de quem foi silenciado.</p>
-      <h3>O crime e a memória</h3>
-      <p>Na noite de 14 de março de 2018, Marielle e o motorista Anderson Gomes foram assassinados a tiros no bairro do Estácio, no centro do Rio. O caso teve repercussão internacional. Em 2024, os executores confessos foram condenados pela Justiça.</p>
-      <p>Seu nome segue vivo no grito “Marielle, presente!”, no Instituto Marielle Franco, criado pela família, e em ruas, murais e políticas públicas pelo país. Sua irmã, Anielle Franco, assumiu em 2023 o Ministério da Igualdade Racial.</p>
-    </div>
-  </dialog>
 </body>
-
 </html>

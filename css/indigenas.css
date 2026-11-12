@@ -1,5 +1,5 @@
 .pagina-indigenas { min-height: 100vh; color: #f4e6cd; background: #101608; }
-.pagina-indigenas .cabecalho { margin-bottom:-76px; background:transparent; }
+.pagina-indigenas .cabecalho { --fundo-cabecalho:#101608; margin-bottom:0; color:#f4e6cd; background:var(--fundo-cabecalho); }
 .ind-hero { position: relative; isolation: isolate; display: flex; min-height: clamp(620px, 60vw, 820px); align-items: center; overflow: hidden; background: #101b08 url('../assets/indigenas/04_fundo_floresta_escurecida.webp') center / cover no-repeat; }
 .ind-hero::before { position: absolute; z-index: 0; inset: 0; background:radial-gradient(ellipse at var(--hero-luz-x,72%) var(--hero-luz-y,42%),rgb(237 135 48 / 10%),transparent 32%),linear-gradient(90deg,rgb(7 13 3 / 80%) 0%,rgb(7 13 3 / 40%) 46%,transparent 78%); content: ''; pointer-events: none; transition:background-position 180ms ease-out; }
 .ind-hero::after { position:absolute; z-index:3; right:0; bottom:0; left:0; height:clamp(70px,10vw,150px); background:linear-gradient(180deg,transparent 0%,rgb(9 26 8 / 48%) 46%,#091a08 100%); content:''; pointer-events:none; }
@@ -75,7 +75,6 @@
 }
 
 @media (max-width: 520px) {
-  .pagina-indigenas .cabecalho { margin-bottom:-66px; }
   .ind-hero { min-height: max(740px, calc(100svh - 64px)); }
   .ind-hero__copy { width: 87%; margin: 58px 0 0 6%; }
   .ind-hero h1 { font-size: clamp(54px, 14vw, 68px); }
@@ -199,3 +198,15 @@
 @media (prefers-reduced-motion:reduce) {
   .vozes__grade { scroll-behavior:auto; }
 }
+
+@media (max-width:520px) {
+ .pagina-indigenas .ind-hero__copy { min-width:0; }
+ .pagina-indigenas .voz-card__fonte, .pagina-indigenas figcaption { overflow-wrap:anywhere; }
+}
+
+/* Acesso manual a todos os cartões, inclusive sem animações ou JavaScript. */
+.historias__janela, .vozes__janela { overflow:hidden; scroll-snap-type:x mandatory; scrollbar-width:none; }
+.historias__janela::-webkit-scrollbar, .vozes__janela::-webkit-scrollbar { display:none; }
+.historias__grade, .vozes__grade { transform:none; will-change:auto; }
+.historias__grade .historia-card, .vozes__grade .voz-card { scroll-snap-align:start; }
+.vozes .historias .historias__janela:focus-visible, .vozes__janela:focus-visible { outline:3px solid #f2a052; outline-offset:4px; }
