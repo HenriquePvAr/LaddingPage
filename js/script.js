@@ -229,27 +229,29 @@ function acrescentarMensagem(texto, autor, html) {
 
 function respostaDoChat(pergunta) {
   const texto = pergunta.toLocaleLowerCase('pt-BR');
-  if (/data|quando|hor[aá]rio|onde|local|adrian|vianorte|centro/.test(texto)) {
-    return { html: 'As datas, os horários e os endereços dos encontros estão na página inicial. <a href="index.html#datas">Consultar a programação completa</a>.' };
+  if (/muncab|afro-?brasileir|salvador|bahia/.test(texto)) {
+    return { html: 'O Museu Nacional da Cultura Afro-Brasileira (MUNCAB) fica no Centro Hist\u00f3rico de Salvador (BA). <a href="https://www.muncab.com.br/" target="_blank" rel="noopener noreferrer">Abrir o site oficial do MUNCAB</a>.' };
+  }
+  if (/museu|gratui/.test(texto)) {
+    return { html: 'O Museu das Culturas Ind\u00edgenas, em S\u00e3o Paulo, tem entrada gratuita para o p\u00fablico em geral \u00e0s quintas-feiras. Pessoas ind\u00edgenas entram sem custo todos os dias. <a href="https://museudasculturasindigenas.org.br/" target="_blank" rel="noopener noreferrer">Abrir o site oficial do museu</a>.' };
+  }
+  if (/povos? ind[i\u00ed]genas?|lideran[c\u00e7]a ind[i\u00ed]gena|yanomami|ticuna|guarani/.test(texto)) {
+    return { html: 'Conhe\u00e7a hist\u00f3rias e trajet\u00f3rias de povos e lideran\u00e7as ind\u00edgenas. <a href="indigenas.html#historias">Ver hist\u00f3rias</a> ou <a href="indigenas.html#vozes">conhecer as vozes</a>.' };
+  }
+  if (/data|quando|hor[a\u00e1]rio|onde|local|adrian|vianorte|centro|programa/.test(texto)) {
+    return { html: 'Consulte datas, hor\u00e1rios e endere\u00e7os dos encontros na <a href="index.html#datas">programa\u00e7\u00e3o completa</a>.' };
   }
   if (/marielle/.test(texto)) {
-    return 'Marielle Franco (1979–2018) foi socióloga, feminista e vereadora do Rio de Janeiro. Negra e criada na Maré, é referência das lutas de mulheres negras, da população LGBTQIA+ e das favelas. Conheça sua história em negras.html#marielle.';
-  }
-  if (/muncab|afro-?brasileir|salvador|bahia/.test(texto)) {
-    return 'O Museu Nacional da Cultura Afro-Brasileira (MUNCAB) fica no Centro Histórico de Salvador (BA). A entrada é gratuita às quartas-feiras e aos domingos, com reserva online. Mais informações em muncab.com.br.';
-  }
-  if (/museu|ind[ií]gena|gratui|programa/.test(texto)) {
-    return 'O Museu das Culturas Indígenas, em São Paulo, tem entrada gratuita para o público em geral às quintas-feiras. Pessoas indígenas entram sem custo todos os dias. A programação está em museudasculturasindigenas.org.br.';
+    return { html: 'Marielle Franco (1979\u20132018) foi soci\u00f3loga, feminista e vereadora do Rio de Janeiro. Negra e criada na Mar\u00e9, \u00e9 refer\u00eancia das lutas de mulheres negras, da popula\u00e7\u00e3o LGBTQIA+ e das favelas. <a href="negras.html#marielle">Abrir a hist\u00f3ria de Marielle</a>.' };
   }
   if (/whats|contato|telefone|falar/.test(texto)) {
-    return { html: 'O WhatsApp da ESBAM é o (92) 99267-3858. <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer">Abrir conversa</a>.' };
+    return { html: 'O WhatsApp da ESBAM \u00e9 o (92) 99267-3858. <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer">Abrir conversa</a>.' };
   }
   if (/evento|projeto|maria|o que|sobre/.test(texto)) {
-    return 'Cultura Afro e Indígena — Lutas e Conquistas é um encontro da UNIESBAM. “Falas de Maria” valoriza histórias e protagonismos de mulheres negras e indígenas, com abertura cultural, círculo de conversas, sabores da ancestralidade e encerramento cultural.';
+    return { html: 'Cultura Afro e Ind\u00edgena \u2014 Lutas e Conquistas \u00e9 um encontro da UNIESBAM. \u201cFalas de Maria\u201d valoriza hist\u00f3rias e protagonismos de mulheres negras e ind\u00edgenas. <a href="negras.html#falas-de-maria">Conhecer Falas de Maria</a>.' };
   }
-  return 'Posso contar as datas do encontro, explicar o evento, falar de Marielle Franco, da programação gratuita do Museu das Culturas Indígenas ou abrir o WhatsApp da ESBAM.';
+  return { html: 'Posso ajudar com a <a href="index.html#datas">programa\u00e7\u00e3o</a>, a <a href="negras.html#marielle">hist\u00f3ria de Marielle</a>, as <a href="indigenas.html#vozes">vozes ind\u00edgenas</a>, os museus e o <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer">WhatsApp da ESBAM</a>.' };
 }
-
 function responderChat(pergunta) {
   const resposta = respostaDoChat(pergunta);
   if (typeof resposta === 'string') acrescentarMensagem(resposta, 'bot');
