@@ -227,27 +227,96 @@ function acrescentarMensagem(texto, autor, html) {
   mensagensChat.scrollTop = mensagensChat.scrollHeight;
 }
 
+// Palavras-chave de cada tema, sem acentos. Por padrão aceitam pequenos erros de digitação e começos de palavra;
+// as marcadas com "=" exigem a palavra exata (evita confundir "centro" com "dentro" ou "quando" com "quanto").
+// Frases com espaço exigem as palavras em sequência. A ordem define a prioridade quando mais de um tema aparece.
+const TEMAS_CHAT = [
+  {
+    chaves: ['helena', 'walcott', 'irma', 'sem teto', 'semteto', 'ocupacao', 'ocupacoes', 'ocupar', 'novo israel', 'terra nova', 'zumbi', 'palmares', 'moradia'],
+    resposta: { html: 'Irmã Helena Augusta Walcott, a “mãe dos sem-teto”, liderou ocupações populares em Manaus nas décadas de 1970 e 1980 e foi fundamental na criação de bairros como Novo Israel, Terra Nova e Zumbi dos Palmares. <a href="negras.html#irma-helena">Conheça a história de Irmã Helena</a>.' },
+  },
+  {
+    chaves: ['felipa', 'aranha', 'quilombo', 'quilombola', '=mola', 'cameta'],
+    resposta: { html: 'Felipa Maria Aranha foi uma mulher negra escravizada que, no século XVIII, fugiu do cativeiro e liderou o Quilombo do Mola, em Cametá (PA). O quilombo reuniu centenas de pessoas e se aliou a outros na resistência às tropas coloniais. <a href="negras.html#felipa">Conheça a história de Felipa</a>.' },
+  },
+  {
+    chaves: ['marielle', '=franco', 'vereadora'],
+    resposta: { html: 'Marielle Franco (1979–2018) foi socióloga, feminista e vereadora do Rio de Janeiro. Negra e criada na Maré, é referência das lutas de mulheres negras, da população LGBTQIA+ e das favelas. <a href="negras.html#marielle">Conheça a história de Marielle</a>.' },
+  },
+  {
+    chaves: ['muncab', 'afro brasileiro', 'afro brasileira', 'afrobrasileiro', 'afrobrasileira', 'salvador', 'bahia'],
+    resposta: { html: 'O Museu Nacional da Cultura Afro-Brasileira (MUNCAB) fica no Centro Histórico de Salvador (BA). A entrada é gratuita às quartas-feiras e aos domingos, com reserva online. <a href="https://muncab.com.br/" target="_blank" rel="noopener noreferrer">Mais informações no site do MUNCAB</a>.' },
+  },
+  {
+    chaves: ['museu', 'indigena', 'gratuito', 'gratuita', 'gratis'],
+    resposta: { html: 'O Museu das Culturas Indígenas, em São Paulo, tem entrada gratuita para o público em geral às quintas-feiras. Pessoas indígenas entram sem custo todos os dias. <a href="https://museudasculturasindigenas.org.br/" target="_blank" rel="noopener noreferrer">Ver a programação do museu</a>.' },
+  },
+  {
+    chaves: ['whatsapp', 'whats', '=zap', 'contato', 'telefone', '=falar', 'ligar'],
+    resposta: { html: 'O WhatsApp da ESBAM é o (92) 99267-3858. <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer">Abrir conversa</a>.' },
+  },
+  {
+    chaves: ['=data', '=datas', '=dia', '=dias', '=quando', '=qnd', '=qdo', '=onde', 'horario', '=hora', '=horas', 'endereco', '=local', '=locais', 'localizacao',
+      'programacao', 'adrianopolis', 'vianorte', 'via norte', '=centro', 'auditorio'],
+    resposta: { html: 'As datas, os horários e os endereços dos encontros estão na página inicial. <a href="index.html#datas">Consultar a programação completa</a>.' },
+  },
+  {
+    chaves: ['evento', 'encontro', 'projeto', '=mira', '=maria', 'marias', '=falas', 'uniesbam', '=esbam', 'experiencia', 'abertura', 'encerramento', 'sabores', 'circulo'],
+    resposta: 'Cultura Afro e Indígena — Lutas e Conquistas é um encontro da UNIESBAM. “Falas de Maria” valoriza histórias e protagonismos de mulheres negras e indígenas, com abertura cultural, círculo de conversas, sabores da ancestralidade e encerramento cultural.',
+  },
+  {
+    saudacao: true,
+    chaves: ['=oi', '=ola', '=opa', '=eai', 'e ai', 'bom dia', 'boa tarde', 'boa noite', '=hello'],
+    resposta: 'Olá! Que bom ter você por aqui. Pode perguntar sobre o encontro, as datas ou as mulheres cujas histórias contamos, como Marielle Franco, Felipa Maria Aranha e Irmã Helena.',
+  },
+  {
+    chaves: ['obrigado', 'obrigada', '=obg', '=valeu', 'agradeco'],
+    resposta: 'Por nada! Se tiver mais alguma pergunta, é só escrever.',
+  },
+];
+
+// Minúsculas, sem acentos e sem pontuação: "Irmã" e "irma" viram a mesma palavra.
+function normalizarTexto(texto) {
+  return texto.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+// Quantas letras precisam ser trocadas, incluídas ou removidas para uma palavra virar a outra.
+function distanciaEntre(a, b) {
+  let anterior = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i += 1) {
+    const atual = [i];
+    for (let j = 1; j <= b.length; j += 1) {
+      atual[j] = Math.min(anterior[j] + 1, atual[j - 1] + 1, anterior[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    anterior = atual;
+  }
+  return anterior[b.length];
+}
+
+function palavraParecida(palavra, chave) {
+  if (palavra === chave) return true;
+  if (chave.length >= 4 && palavra.startsWith(chave)) return true;            // "indigenas" -> "indigena"
+  if (palavra.length >= 5 && chave.startsWith(palavra)) return true;          // "mariel" -> "marielle"
+  if (palavra.length < 4 || chave.length < 4) return false;
+  const tolerancia = chave.length >= 8 ? 2 : 1;                               // "helna", "marilele", "adrianopols"
+  return Math.abs(palavra.length - chave.length) <= tolerancia && distanciaEntre(palavra, chave) <= tolerancia;
+}
+
+function contemChave(palavras, chave) {
+  if (chave.startsWith('=')) return palavras.includes(chave.slice(1));
+  const partes = chave.split(' ');
+  return palavras.some((_, inicio) => partes.every((parte, k) => palavras[inicio + k] && palavraParecida(palavras[inicio + k], parte)));
+}
+
 function respostaDoChat(pergunta) {
-  const texto = pergunta.toLocaleLowerCase('pt-BR');
-  if (/data|quando|hor[aá]rio|onde|local|adrian|vianorte|centro/.test(texto)) {
-    return { html: 'As datas, os horários e os endereços dos encontros estão na página inicial. <a href="index.html#datas">Consultar a programação completa</a>.' };
-  }
-  if (/marielle/.test(texto)) {
-    return 'Marielle Franco (1979–2018) foi socióloga, feminista e vereadora do Rio de Janeiro. Negra e criada na Maré, é referência das lutas de mulheres negras, da população LGBTQIA+ e das favelas. Conheça sua história em negras.html#marielle.';
-  }
-  if (/muncab|afro-?brasileir|salvador|bahia/.test(texto)) {
-    return 'O Museu Nacional da Cultura Afro-Brasileira (MUNCAB) fica no Centro Histórico de Salvador (BA). A entrada é gratuita às quartas-feiras e aos domingos, com reserva online. Mais informações em muncab.com.br.';
-  }
-  if (/museu|ind[ií]gena|gratui|programa/.test(texto)) {
-    return 'O Museu das Culturas Indígenas, em São Paulo, tem entrada gratuita para o público em geral às quintas-feiras. Pessoas indígenas entram sem custo todos os dias. A programação está em museudasculturasindigenas.org.br.';
-  }
-  if (/whats|contato|telefone|falar/.test(texto)) {
-    return { html: 'O WhatsApp da ESBAM é o (92) 99267-3858. <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer">Abrir conversa</a>.' };
-  }
-  if (/evento|projeto|maria|o que|sobre/.test(texto)) {
-    return 'Cultura Afro e Indígena — Lutas e Conquistas é um encontro da UNIESBAM. “Falas de Maria” valoriza histórias e protagonismos de mulheres negras e indígenas, com abertura cultural, círculo de conversas, sabores da ancestralidade e encerramento cultural.';
-  }
-  return 'Posso contar as datas do encontro, explicar o evento, falar de Marielle Franco, da programação gratuita do Museu das Culturas Indígenas ou abrir o WhatsApp da ESBAM.';
+  const texto = normalizarTexto(pergunta);
+  const encontrar = (palavras, temas) => temas.find(({ chaves }) => chaves.some((chave) => contemChave(palavras, chave)));
+  // "bom dia" não deve ser lido como pergunta sobre o "dia" do evento: saudações saem antes da busca pelos temas.
+  const semSaudacao = texto.replace(/\b(bom dia|boa tarde|boa noite)\b/g, ' ').split(' ').filter(Boolean);
+  const tema = encontrar(semSaudacao, TEMAS_CHAT)
+    || encontrar(texto.split(' ').filter(Boolean), TEMAS_CHAT.filter((t) => t.saudacao));
+  if (tema) return tema.resposta;
+  return { html: 'Ainda não tenho informações suficientes para responder a essa pergunta com segurança. Tente perguntar de outro jeito ou fale com a equipe pelo <a href="https://wa.me/5592992673858" target="_blank" rel="noopener noreferrer">WhatsApp da ESBAM</a>.' };
 }
 
 function responderChat(pergunta) {
@@ -263,7 +332,7 @@ function definirChatAberto(aberto) {
   painelChat.hidden = !aberto;
   if (aberto) {
     if (mensagensChat && mensagensChat.childElementCount === 0) {
-      acrescentarMensagem('Olá. Sou o guia deste encontro. Pergunte sobre as datas, o evento, Marielle Franco ou a programação gratuita do museu.', 'bot');
+      acrescentarMensagem('Olá! Sou o guia deste encontro. Pode perguntar o que quiser sobre o evento, as histórias de mulheres negras e indígenas ou as culturas afro-brasileiras e indígenas.', 'bot');
     }
     campoChat?.focus();
   } else {
@@ -278,6 +347,12 @@ if (atalhoChat && painelChat && formularioChat) {
   });
 
   botaoFecharChat?.addEventListener('click', () => definirChatAberto(false));
+
+  // Links internos das respostas fecham o chat para que o conteúdo de destino fique visível.
+  mensagensChat?.addEventListener('click', (evento) => {
+    const link = evento.target.closest('a');
+    if (link && link.target !== '_blank') definirChatAberto(false);
+  });
 
   painelChat.querySelectorAll('.painel-chat__sugestoes button').forEach((botao) => {
     botao.addEventListener('click', () => {
@@ -308,7 +383,7 @@ if (atalhoChat && painelChat && formularioChat) {
   });
 }
 
-// Carrossel de Falas de Maria e Marielle Franco: avan?o autom?tico sem controles vis?veis.
+// Carrossel de Falas de Maria, Marielle Franco, Felipa Maria Aranha e Irmã Helena: avanço automático e setas para navegar.
 const carrossel = document.querySelector('.carrossel');
 if (carrossel) {
   const trilho = carrossel.querySelector('.carrossel__trilho');
@@ -349,6 +424,9 @@ if (carrossel) {
   document.addEventListener('bio-modal-aberto', agendarTroca);
   document.addEventListener('bio-modal-fechado', agendarTroca);
   movimentoReduzido.addEventListener('change', agendarTroca);
+
+  carrossel.querySelector('.carrossel__seta--anterior')?.addEventListener('click', () => irParaSlide(slideAtual - 1));
+  carrossel.querySelector('.carrossel__seta--proxima')?.addEventListener('click', () => irParaSlide(slideAtual + 1));
 
   carrossel.addEventListener('keydown', (evento) => {
     if (evento.key === 'ArrowRight') irParaSlide(slideAtual + 1);

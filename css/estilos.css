@@ -157,6 +157,15 @@ h1, h2, h3 { margin-top: 0; font-family: 'Fraunces', Georgia, serif; letter-spac
 .carrossel__janela { overflow: hidden; overflow: clip; }
 .carrossel__trilho { display: flex; align-items: center; transition: transform 600ms cubic-bezier(.22, .61, .36, 1); }
 .carrossel__slide { flex: 0 0 100%; min-width: 0; }
+.carrossel__seta { position: absolute; z-index: 3; top: 50%; display: grid; width: 46px; height: 46px; place-items: center; padding: 0; border: 1px solid rgb(41 25 20 / 18%); border-radius: 50%; color: var(--espresso); background: var(--creme); box-shadow: 0 8px 18px rgb(41 25 20 / 18%); cursor: pointer; transform: translateY(-50%); transition: background .2s ease, color .2s ease; }
+.carrossel__seta:hover { color: var(--espresso); background: var(--dourado); }
+.carrossel__seta:focus-visible { outline: 3px solid var(--dourado); outline-offset: 3px; }
+.carrossel__seta svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.2; }
+.carrossel__seta--anterior { left: 0; }
+.carrossel__seta--proxima { right: 0; }
+@media (max-width: 680px) {
+  .carrossel__seta { top: 135px; width: 42px; height: 42px; }
+}
 .projeto__imagem { width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; font: inherit; }
 .projeto__imagem img { transition: transform .35s ease; }
 .projeto__imagem:hover img, .projeto__imagem:focus-visible img { transform: scale(1.03); }
@@ -348,7 +357,8 @@ body.modal-aberto { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .revelar { opacity: 1; transform: none; transition: none; }
-  .carrossel__trilho, }
+  .carrossel__trilho { transition: none; }
+}
 
 /* Refluxo dos elementos compartilhados sem alterar a identidade visual. */
 .cabecalho__interno > *, .rodape__grade > *, .datas__grade > * { min-width:0; }
