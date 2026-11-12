@@ -137,6 +137,14 @@
 }
 
 /* Carrossel automático das histórias dos povos, sem controles nem rolagem manual. */
+@media (max-width:680px) {
+  .ind-hero__copy { margin-top:82px; }
+  .historias__nota { font-size:12px; }
+  .historia-card__figura figcaption { font-size:9px; line-height:1.45; }
+  .voz-card__retrato figcaption { font-size:10px; }
+  .voz-card__fonte, .historia-card__fonte { min-height:44px; }
+}
+
 .historias__janela { width:100%; min-width:0; overflow:hidden; }
 .historias__grade { display:flex; align-items:stretch; gap:10px; width:100%; transform:translate3d(0,0,0); will-change:transform; }
 .historia-card { flex:0 0 var(--historias-card-width, calc((100% - 30px) / 4)); min-height:360px; padding:0; }

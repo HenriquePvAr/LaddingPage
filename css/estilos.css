@@ -24,7 +24,8 @@ a { color: inherit; }
 .cabecalho { position: sticky; z-index: 20; top: 0; color: var(--creme); background: var(--espresso-profundo); transition: box-shadow 180ms ease; }
 .pagina-inicial .cabecalho { margin-bottom:-76px; color:var(--espresso); background:transparent; }
 .pagina-inicial .cabecalho .marca__imagem { filter:brightness(0); }
-.cabecalho--rolado { box-shadow: 0 5px 18px rgb(29 18 14 / 18%); }
+.cabecalho--rolado { color:var(--creme); background:var(--espresso-profundo); box-shadow: 0 5px 18px rgb(29 18 14 / 18%); }
+.pagina-inicial .cabecalho--rolado .marca__imagem { filter:none; }
 .cabecalho__interno { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; }
 .marca { display: inline-flex; align-items: center; text-decoration: none; }
 .marca__imagem { display: block; width: 230px; height: auto; object-fit: contain; }
@@ -226,6 +227,9 @@ body.modal-aberto { overflow: hidden; }
 .painel-chat__rotulo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .painel-chat__formulario input { min-width: 0; padding: 10px 12px; border: 1px solid #d7b994; border-radius: 999px; color: var(--espresso); background: white; font: 500 13px 'Manrope', Arial, sans-serif; }
 .painel-chat__formulario button { padding: 0 14px; }
+.menu-alternar, .navegacao a, .botao, .link-seta, .cartao-data__mapa, .botao-calendario, .atalho-chat, .painel-chat button { touch-action:manipulation; }
+.link-seta, .cartao-data__mapa, .botao-calendario { min-height:44px; }
+.painel-chat__sugestoes button, .painel-chat__formulario button { min-height:40px; }
 .rodape__credito { color: #ab957e; }
 
 @media (max-width: 900px) {
@@ -245,14 +249,18 @@ body.modal-aberto { overflow: hidden; }
   .cabecalho__interno { min-height: 66px; }
   .pagina-inicial .cabecalho { margin-bottom:-66px; }
   .marca__imagem { width: 170px; }
-  .menu-alternar { display: grid; width: 42px; height: 42px; place-content: center; gap: 5px; border: 1px solid rgb(255 248 235 / 45%); border-radius: 50%; background: transparent; }
+  .menu-alternar { display: grid; width: 44px; height: 44px; place-content: center; gap: 5px; border: 1px solid rgb(255 248 235 / 45%); border-radius: 50%; background: transparent; }
   .menu-alternar span { width: 17px; height: 2px; background: var(--creme); transition: transform 160ms ease, opacity 160ms ease; }
   .menu-alternar[aria-expanded="true"] span:first-child { transform: translateY(7px) rotate(45deg); }
   .menu-alternar[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
   .menu-alternar[aria-expanded="true"] span:last-child { transform: translateY(-7px) rotate(-45deg); }
-  .navegacao { position: absolute; top: 100%; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 18px 16px; color: var(--espresso); background: var(--creme); box-shadow: 0 10px 15px rgb(41 25 20 / 12%); }
+  .navegacao { position: absolute; z-index:21; top:100%; right:0; left:0; display:none; max-height:calc(100dvh - 66px); flex-direction:column; align-items:stretch; gap:0; overflow-y:auto; padding:8px 18px 16px; color:var(--espresso); background:var(--creme); box-shadow:0 10px 15px rgb(41 25 20 / 12%); }
   .navegacao--aberta { display: flex; }
   .navegacao a { padding: 11px 8px; border-bottom: 1px solid #e5d3b8; }
+  .pagina-inicial .cabecalho:not(.cabecalho--rolado) .menu-alternar { border-color:rgb(41 25 20 / 45%); }
+  .pagina-inicial .cabecalho:not(.cabecalho--rolado) .menu-alternar span { background:var(--espresso); }
+  .pagina-inicial .cabecalho--rolado .menu-alternar { border-color:rgb(255 248 235 / 45%); }
+  .pagina-inicial .cabecalho--rolado .menu-alternar span { background:var(--creme); }
   .navegacao .navegacao__cta { justify-content: center; margin-top: 10px; border: 0; }
   .hero::before { width: 20px; background-size: contain; opacity: .3; }
   .hero__grade { min-height: 0; grid-template-columns: 1fr; }
@@ -287,7 +295,9 @@ body.modal-aberto { overflow: hidden; }
   .atalho-chat { right: 10px; bottom: 10px; width: 58px; }
   .atalho-chat__icone { width: 50px; height: 50px; }
   .atalho-chat__rotulo { width: 54px; }
-  .painel-chat { right: 10px; bottom: 92px; max-height: min(560px, calc(100vh - 104px)); }
+  .painel-chat { right:10px; bottom:calc(92px + env(safe-area-inset-bottom)); width:min(360px,calc(100vw - 20px)); max-height:min(560px,calc(100dvh - 112px - env(safe-area-inset-bottom))); }
+  .painel-chat__formulario input { min-height:44px; font-size:16px; }
+  .painel-chat__sugestoes button, .painel-chat__formulario button, .painel-chat__fechar { min-height:44px; }
   .chamado-museu__grade { grid-template-columns: 1fr; }
   .bio-modal__corpo { padding: 22px 18px 26px; }
   .bio-modal h2 { font-size: 40px; }
@@ -338,6 +348,14 @@ body.modal-aberto { overflow: hidden; }
   .cartao-experiencia { grid-template-columns: 27px 1fr; padding-inline: 6px; }
   .cartao-experiencia img { width: 26px; }
   .cartao-experiencia h3 { font-size: 14px; }
+}
+
+@media (max-width:680px) {
+  .pagina-inicial .cabecalho:not(.cabecalho--rolado) { color:var(--espresso); }
+  .navegacao a, .navegacao .navegacao__cta { min-height:44px; }
+  .rodape__navegacao > a, .rodape__canais a { display:flex; min-height:44px; align-items:center; }
+  .bio-modal { width:calc(100vw - 20px); max-height:calc(100dvh - 20px); overflow:auto; overscroll-behavior:contain; }
+  .bio-modal__corpo { padding-bottom:max(24px,env(safe-area-inset-bottom)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

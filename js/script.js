@@ -159,11 +159,16 @@ function baixarEventoDoCalendario(cartao) {
   const linkDeDownload = document.createElement('a');
   linkDeDownload.href = enderecoTemporario;
   linkDeDownload.download = `uniesbam-${identificador}.ics`;
-  linkDeDownload.hidden = true;
+  linkDeDownload.setAttribute('aria-hidden', 'true');
+  linkDeDownload.style.position = 'fixed';
+  linkDeDownload.style.left = '-9999px';
+  linkDeDownload.style.width = '1px';
+  linkDeDownload.style.height = '1px';
+  linkDeDownload.style.opacity = '0';
   document.body.append(linkDeDownload);
   linkDeDownload.click();
   linkDeDownload.remove();
-  window.setTimeout(() => URL.revokeObjectURL(enderecoTemporario), 1000);
+  window.setTimeout(() => URL.revokeObjectURL(enderecoTemporario), 60000);
 }
 
 // Acrescenta uma ação de calendário a cada cartão sem duplicar dados no HTML.
