@@ -210,3 +210,12 @@
 .historias__grade, .vozes__grade { transform:none; will-change:auto; }
 .historias__grade .historia-card, .vozes__grade .voz-card { scroll-snap-align:start; }
 .vozes .historias .historias__janela:focus-visible, .vozes__janela:focus-visible { outline:3px solid #f2a052; outline-offset:4px; }
+
+/* Responsive card widths for tablet and mobile. */
+@media (max-width:980px) {
+  .vozes__grade .voz-card { flex-basis:calc((100% - 14px) / 2); }
+}
+@media (max-width:520px) {
+  .vozes__grade { gap:12px; margin-inline:0; }
+  .vozes__grade .voz-card { flex:0 0 100%; width:100%; }
+}
