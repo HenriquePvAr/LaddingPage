@@ -224,3 +224,5 @@
 .historias__botao { display:grid; width:40px; height:40px; place-items:center; border:1px solid #d49348; border-radius:50%; color:#f5e5c8; background:#12200d; font:700 22px/1 Manrope,sans-serif; cursor:pointer; transition:background-color 160ms ease,transform 160ms ease; }
 .historias__botao:hover { background:#a6440c; transform:translateY(-2px); }
 .historias__botao:focus-visible { outline:3px solid #f2a052; outline-offset:3px; }
+
+.pagina-indigenas .rodape { background-color:#17220f; }
