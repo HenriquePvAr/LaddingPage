@@ -4,7 +4,7 @@
 .ind-hero::before { position: absolute; z-index: 0; inset: 0; background:radial-gradient(ellipse at var(--hero-luz-x,72%) var(--hero-luz-y,42%),rgb(237 135 48 / 10%),transparent 32%),linear-gradient(90deg,rgb(7 13 3 / 80%) 0%,rgb(7 13 3 / 40%) 46%,transparent 78%); content: ''; pointer-events: none; transition:background-position 180ms ease-out; }
 .ind-hero::after { position:absolute; z-index:3; right:0; bottom:0; left:0; height:clamp(70px,10vw,150px); background:linear-gradient(180deg,transparent 0%,rgb(9 26 8 / 48%) 46%,#091a08 100%); content:''; pointer-events:none; }
 .ind-hero__copy { position: relative; z-index: 2; width: min(47%, 730px); margin: 0 0 2vw 6.4%; }
-.ind-hero h1 { margin: 0; color: #f4e6cd; font-family: 'Fraunces', Georgia, serif; font-size: clamp(58px, 6.5vw, 112px); font-weight: 700; letter-spacing: -.045em; line-height: .93; }
+.ind-hero h1 { margin: 0; color: #f4e6cd; font-family: 'Fraunces', Georgia, serif; font-size: clamp(57px, 6.7vw, 91px); font-weight: 600; letter-spacing: -.04em; line-height: .79; text-transform: uppercase; }
 .ind-hero h1 span { color: #e58b44; }
 .ind-hero__pincelada { display: block; width: min(300px, 65%); height: auto; margin: 20px 0 24px; }
 .ind-hero__copy p { max-width: 600px; margin: 0; color: #f4f1e9; font-size: clamp(17px, 1.8vw, 29px); line-height: 1.45; }
