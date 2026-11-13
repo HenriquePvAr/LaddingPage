@@ -366,3 +366,8 @@ body.modal-aberto { overflow: hidden; }
  .painel-chat__sugestoes { flex-wrap:wrap; }
  .painel-chat__formulario input { min-width:0; }
 }
+
+.carrossel__controles { display:flex; justify-content:center; gap:12px; padding:14px 0 4px; }
+.carrossel__seta { display:grid; width:42px; height:42px; place-items:center; border:1px solid var(--terracota); border-radius:50%; color:var(--terracota); background:var(--creme); font:700 22px/1 Manrope,sans-serif; cursor:pointer; transition:color 160ms ease,background-color 160ms ease,transform 160ms ease; }
+.carrossel__seta:hover { color:var(--creme); background:var(--terracota); transform:translateY(-2px); }
+.carrossel__seta:focus-visible { outline:3px solid var(--dourado); outline-offset:3px; }

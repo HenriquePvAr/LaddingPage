@@ -412,6 +412,9 @@ if (carrossel) {
     agendarTroca();
   };
 
+  carrossel.querySelector('[data-slide-anterior]')?.addEventListener('click', () => irParaSlide(slideAtual - 1));
+  carrossel.querySelector('[data-slide-proxima]')?.addEventListener('click', () => irParaSlide(slideAtual + 1));
+
   function agendarTroca() {
     clearTimeout(temporizador);
     if (!focoNoCarrossel && !movimentoReduzido.matches && !document.hidden && !document.querySelector('.bio-modal[open]')) {
@@ -485,7 +488,7 @@ document.querySelectorAll('[data-bio]').forEach((gatilho) => {
 });
 
 // Carrosseis ind?genas: avan?o autom?tico sem barra ou controles vis?veis.
-function prepararCarrosselIndigena(seletor, seletorJanela, seletorCartao, intervalo) {
+function prepararCarrosselIndigena(seletor, seletorJanela, seletorCartao, intervalo, anterior, proximo) {
   const trilho = document.querySelector(seletor);
   if (!trilho) return;
   const janela = trilho.closest(seletorJanela);
@@ -494,41 +497,33 @@ function prepararCarrosselIndigena(seletor, seletorJanela, seletorCartao, interv
   const movimento = window.matchMedia('(prefers-reduced-motion: reduce)');
   let temporizador;
   let emInteracao = false;
-  function mover() {
+  function mover(direcao = 1) {
     const largura = cartoes[0]?.getBoundingClientRect().width || janela.clientWidth;
     const passo = largura + (parseFloat(getComputedStyle(trilho).gap) || 0);
-    const fim = janela.scrollWidth - janela.clientWidth;
-    const destino = janela.scrollLeft >= fim - 2 ? 0 : Math.min(fim, janela.scrollLeft + passo);
+    const fim = Math.max(0, trilho.scrollWidth - janela.clientWidth);
+    const atual = janela.scrollLeft;
+    const destino = direcao > 0 ? (atual >= fim - 2 ? 0 : Math.min(fim, atual + passo)) : (atual <= 2 ? fim : Math.max(0, atual - passo));
     janela.scrollTo({ left: destino, behavior: movimento.matches ? 'auto' : 'smooth' });
+    agendar();
   }
   function agendar() {
     clearInterval(temporizador);
-    if (emInteracao || movimento.matches || document.hidden) return;
-    temporizador = setInterval(mover, intervalo);
+    if (!emInteracao && !movimento.matches && !document.hidden) temporizador = setInterval(() => mover(1), intervalo);
   }
   janela.tabIndex = 0;
   janela.addEventListener('keydown', (evento) => {
     if (evento.target !== janela) return;
-    if (evento.key === 'ArrowRight' || evento.key === 'ArrowLeft') {
-      evento.preventDefault();
-      const largura = cartoes[0]?.getBoundingClientRect().width || janela.clientWidth;
-      const passo = largura + (parseFloat(getComputedStyle(trilho).gap) || 0);
-      janela.scrollBy({ left: evento.key === 'ArrowRight' ? passo : -passo, behavior: 'smooth' });
-    }
+    if (evento.key === 'ArrowRight' || evento.key === 'ArrowLeft') { evento.preventDefault(); mover(evento.key === 'ArrowRight' ? 1 : -1); }
   });
+  document.querySelector(anterior)?.addEventListener('click', () => mover(-1));
+  document.querySelector(proximo)?.addEventListener('click', () => mover(1));
   janela.addEventListener('focusin', () => { emInteracao = true; agendar(); });
-  janela.addEventListener('focusout', (evento) => {
-    emInteracao = janela.contains(evento.relatedTarget);
-    agendar();
-  });
+  janela.addEventListener('focusout', (evento) => { emInteracao = janela.contains(evento.relatedTarget); agendar(); });
   janela.addEventListener('pointerenter', () => { emInteracao = true; agendar(); });
-  janela.addEventListener('pointerleave', () => {
-    emInteracao = janela.contains(document.activeElement);
-    agendar();
-  });
+  janela.addEventListener('pointerleave', () => { emInteracao = janela.contains(document.activeElement); agendar(); });
   document.addEventListener('visibilitychange', agendar);
   movimento.addEventListener('change', agendar);
   agendar();
 }
 prepararCarrosselIndigena('[data-vozes-carrossel]', '.vozes__janela', '.voz-card', 7000);
-prepararCarrosselIndigena('[data-historias-carrossel]', '.historias__janela', '.historia-card', 6000);
+prepararCarrosselIndigena('[data-historias-carrossel]', '.historias__janela', '.historia-card', 6000, '[data-historias-anterior]', '[data-historias-proximo]');
