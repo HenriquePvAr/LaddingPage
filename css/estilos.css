@@ -194,12 +194,13 @@ body.modal-aberto { overflow: hidden; }
 .chamado-museu__acao > span, .chamado-museu__acao::before, .chamado-museu__acao::after { display:none !important; content:none !important; }
 .chamado-museu__acao:hover { text-decoration:underline; text-underline-offset:3px; }
 
-.atalho-chat { position: fixed; z-index: 25; right: 18px; bottom: 18px; display: flex; width: 72px; flex-direction: column; align-items: center; gap: 2px; padding: 0; border: 0; background: transparent; cursor: pointer; transition: transform .2s ease; }
-.atalho-chat__icone { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 8px 14px rgb(41 25 20 / 30%)); }
-.atalho-chat__rotulo { width: 66px; height: auto; filter: drop-shadow(0 4px 8px rgb(41 25 20 / 25%)); }
+/* Proporção inspirada no chat do suporte Microsoft: ícone de 64px a 48px das bordas, com a frase por cima. */
+.atalho-chat { position: fixed; z-index: 25; right: 48px; bottom: 48px; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 4px; padding: 0; border: 0; background: transparent; text-decoration: none; cursor: pointer; transition: transform .2s ease; }
+.atalho-chat__icone { width: 64px; height: 64px; flex: none; object-fit: contain; filter: drop-shadow(0 6px 12px rgb(41 25 20 / 30%)); }
+.atalho-chat__rotulo { width: 170px; max-width: none; height: auto; filter: drop-shadow(0 3px 6px rgb(41 25 20 / 35%)); }
 .atalho-chat:hover, .atalho-chat:focus-visible { transform: translateY(-3px); }
 .atalho-chat:focus-visible { outline: 3px solid var(--dourado); outline-offset: 4px; border-radius: 12px; }
-.painel-chat { position: fixed; z-index: 26; right: 18px; bottom: 116px; display: flex; width: min(360px, calc(100vw - 24px)); max-height: min(560px, calc(100vh - 136px)); flex-direction: column; overflow: hidden; border: 1px solid #d7b994; border-radius: 18px; color: var(--espresso); background: var(--creme); box-shadow: 0 18px 40px rgb(41 25 20 / 22%); }
+.painel-chat { position: fixed; z-index: 26; right: 48px; bottom: 168px; display: flex; width: min(360px, calc(100vw - 24px)); max-height: min(560px, calc(100vh - 188px)); flex-direction: column; overflow: hidden; border: 1px solid #d7b994; border-radius: 18px; color: var(--espresso); background: var(--creme); box-shadow: 0 18px 40px rgb(41 25 20 / 22%); }
 .painel-chat[hidden] { display: none; }
 .painel-chat__cabeca { display: grid; grid-template-columns: 42px 1fr auto; align-items: center; gap: 10px; padding: 12px 12px 10px; color: var(--creme); background: var(--espresso-profundo); }
 .painel-chat__cabeca img { width: 42px; height: 42px; object-fit: contain; }
@@ -282,10 +283,10 @@ body.modal-aberto { overflow: hidden; }
   .chamado-museu__cartao { padding:0; }
   .chamado-museu__corpo { padding:16px 16px 20px; }
   .chamado-museu__imagem { height:190px; }
-  .atalho-chat { right: 10px; bottom: 10px; width: 58px; }
-  .atalho-chat__icone { width: 50px; height: 50px; }
-  .atalho-chat__rotulo { width: 54px; }
-  .painel-chat { right:10px; bottom:calc(92px + env(safe-area-inset-bottom)); width:min(360px,calc(100vw - 20px)); max-height:min(560px,calc(100dvh - 112px - env(safe-area-inset-bottom))); }
+  .atalho-chat { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); align-items: flex-end; gap: 4px; }
+  .atalho-chat__icone { width: 54px; height: 54px; }
+  .atalho-chat__rotulo { width: 140px; }
+  .painel-chat { right:10px; bottom:calc(118px + env(safe-area-inset-bottom)); width:min(360px,calc(100vw - 20px)); max-height:min(560px,calc(100dvh - 138px - env(safe-area-inset-bottom))); }
   .painel-chat__formulario input { min-height:44px; font-size:16px; }
   .painel-chat__sugestoes button, .painel-chat__formulario button, .painel-chat__fechar { min-height:44px; }
   .chamado-museu__grade { grid-template-columns: 1fr; }

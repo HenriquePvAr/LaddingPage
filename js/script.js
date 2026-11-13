@@ -210,7 +210,8 @@ if ('IntersectionObserver' in window) {
 }
 
 // Abre um chatbot local com respostas sobre o encontro, o museu e o WhatsApp.
-const atalhoChat = document.querySelector('.atalho-chat');
+// Só é ativado quando o atalho é um <button>; como link (<a>), o atalho leva direto ao WhatsApp.
+const atalhoChat = document.querySelector('button.atalho-chat');
 const painelChat = document.querySelector('#painel-chat');
 const mensagensChat = painelChat?.querySelector('.painel-chat__mensagens');
 const formularioChat = painelChat?.querySelector('.painel-chat__formulario');
