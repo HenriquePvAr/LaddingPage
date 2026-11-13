@@ -1,42 +1,44 @@
 # Guia do projeto
 
-## Organização e responsabilidades
+## Organização
 
-- `index.html`: fonte única do conteúdo, navegação, datas, experiências e rodapé.
-- `css/estilos.css`: componentes, cores, tipografia e comportamento por largura de tela.
-- `assets/`: imagens, ícones, grafismos e tokens servidos pela página.
-- `js/script.js`: menu móvel acessível, destaque da seção ativa, animações discretas de entrada e geração local de arquivos `.ics` para as datas. Não adicionar dependências para essas interações.
-- `docs/evidencias/`: capturas integrais da implementação anterior e da implementação atual.
+- `index.html`: portal, navegação, programação oficial, endereços e rodapé.
+- `negras.html`: histórias e biografias de mulheres negras, museus e fontes.
+- `indigenas.html`: histórias de povos indígenas e biografias de lideranças mulheres.
+- `css/estilos.css`: estilos compartilhados, cores, tipografia, componentes e pontos de quebra.
+- `css/inicio.css`: estilos do portal.
+- `css/indigenas.css`: estilos específicos da página indígena, incluindo seus cartões e carrosséis.
+- `js/script.js`: menu, navegação, animações, carrosséis, modais, chatbot e arquivos `.ics` de calendário.
+- `assets/`: imagens, ilustrações, ícones e tokens visuais.
+- `docs/evidencias/`: capturas de referência.
+- `docs/originais/`: arquivos preservados; não fazem parte da navegação atual e devem ser tratados como arquivo histórico.
 
-## Padrão de código
+## Conteúdo e edição
 
-- Escrever conteúdo, nomes de classes e funções, comentários e documentação em português.
-- Usar nomes descritivos, HTML semântico, títulos em ordem e IDs estáveis para as âncoras.
-- Manter componentes CSS com nomes explicativos no padrão existente, como `.hero__texto` e `.rodape__canais`.
-- Manter estilos de foco visíveis, atributos acessíveis e suporte a `prefers-reduced-motion`.
-- Manter interações progressivas: sem JavaScript o conteúdo permanece legível; animações respeitam movimento reduzido e os arquivos de calendário usam apenas dados confirmados no HTML.
-- Preferir os WebP e SVG oficiais já fornecidos. Não reconstruir a marca nem gravar textos de interface dentro de imagens.
-- Preservar links externos com `target="_blank"` junto de `rel="noopener noreferrer"` e rótulos acessíveis.
+- Manter datas e endereços oficiais exclusivamente em `index.html`. As páginas internas e o chatbot devem encaminhar para `index.html#datas`.
+- Biografias nas páginas culturais devem apresentar mulheres. Histórias de povos podem explicar saberes coletivos, mas imagens de pessoas nessas seções devem seguir o pedido editorial de representar mulheres.
+- Preservar as fontes nos cartões e textos. Não atribuir a personagens fictícias citações, fotografias ou créditos de pessoas reais.
+- As novas imagens ilustrativas de personagens fictícias devem manter texto alternativo e legenda que deixem claro seu caráter representativo; não são retratos documentais.
+- Usar `target="_blank"` sempre com `rel="noopener noreferrer"` em links externos.
+- Não gravar textos de interface dentro de imagens. Preservar os arquivos de marca recebidos.
 
+## Padrões de interface
 
+- Escrever conteúdo, classes, funções e comentários em português.
+- Usar HTML semântico, títulos hierárquicos, IDs estáveis, foco visível e rótulos acessíveis.
+- Manter o suporte a `prefers-reduced-motion` nas animações e carrosséis.
+- O carrossel de histórias e cartões de povos indígenas tem controles de avançar/voltar e avanço automático. O carrossel de vozes indígenas é horizontal e avança automaticamente.
+- O carrossel de histórias de `negras.html` tem setas para avançar e voltar, além do avanço automático.
+- Ao alterar larguras de cartões, conferir também os estilos responsivos correspondentes em `css/indigenas.css` e `css/estilos.css`.
 
-## Validação antes de publicar
+## Revisão antes de publicar
 
-1. Servir a pasta pela instrução de execução acima.
-2. Revisar a página inteira em 1440, 1024, 768, 390 e 320 px; conferir ordem, alinhamento, recortes e ausência de rolagem horizontal.
-3. Conferir se as imagens carregam, as âncoras levam a seções existentes, o menu abre e fecha por toque e teclado, e cada ação de calendário gera a data e a unidade corretas.
-4. Confirmar com a instituição o lockup final da logo, pois o arquivo branco recebido tem o subtítulo “Centro Universitário”, diferente do cartaz.
+1. Servir a pasta com o comando em “Executar localmente” no README.
+2. Conferir as páginas completas em desktop e celular: ordem, alinhamento, recortes das imagens e ausência de rolagem horizontal.
+3. Conferir imagens locais, links de fonte, âncoras, menus, carrosséis, modais de biografia e ações de calendário.
+4. Confirmar que cada crédito corresponde à imagem exibida e que ilustrações fictícias estão identificadas.
+5. Conferir se o rodapé e os links do repositório estão visíveis em todas as páginas.
 
+## Referências históricas
 
-## Evidências visuais
-
-As capturas integrais da página estão em [`docs/evidencias/`](evidencias/): `landing-page-desktop-1440px.png` e `landing-page-celular-390px.png`.
-
-## Reorganização Mira
-
-A entrada passa a ser `index.html`. Conteúdos históricos da antiga inicial estão em `negras.html`; `indigenas.html` mantém os conteúdos dos povos indígenas. A agenda completa deve ser mantida exclusivamente no `index.html`, acessível das internas e do chatbot por `index.html#datas`. Referências históricas a datas devem ser preservadas.
-
-`css/inicio.css` isola a composição do portal. O JavaScript compartilhado mantém menu, carrosséis, biografias, chatbot e calendário sem dependências novas. A cópia em `docs/originais/index-original.html` deve permanecer inalterada e fora da navegação. A logo oficial Mira ainda será fornecida; não usar substitutos.
-
-
-Validação da reorganização: backup conferido por SHA256; arquivos, âncoras locais e IDs das três páginas conferidos; agenda exclusiva da inicial; sintaxe JavaScript aprovada por node --check. Navegador indisponível na sessão: a revisão visual das cinco larguras e os testes interativos de chatbot, menu, carrosséis, biografias e calendário continuam pendentes.
+A entrada atual é `index.html`. A agenda fica nessa página, com acesso por `index.html#datas`. As cópias em `docs/originais/` guardam versões anteriores e não devem ser alteradas ao atualizar o conteúdo ativo.
